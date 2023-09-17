@@ -8,7 +8,7 @@ char	**read_file(int fd, t_parse *parse)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == '\0')
+		if (!line)
 			break ;
 		parse->str = ft_strjoin(parse->str, line);
 		free(line);

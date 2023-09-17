@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
 //   int i;
 //   i = 0;
   check_args(argc, argv, &parse);
+  check_all(&parse);
   
   
   init_data(&cub3D);

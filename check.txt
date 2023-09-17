@@ -1,0 +1,6 @@
+-> check space + new line
+-> check duplicate arguments
+-> check if missing arguments
+
+-> check the params of the arguments
+-> 

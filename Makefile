@@ -14,9 +14,10 @@ CFLAGS += -fsanitize=address -g3
 # MLX = -I /usr/local/include -L /usr/local/lib -lmlx
 
 # FRAMEWORKS = -framework OpenGl -framework Appkit
-PARS = parsing/parsing.c parsing/check_args.c
+GNL = Get_next_line/get_next_line.c Get_next_line/get_next_line_utils.c
+PARS = parsing/parsing.c parsing/check_args.c parsing/check_all.c parsing/utils.c 
 RC = raycasting/draw_2d_map.c raycasting/mlx_utils.c raycasting/hooks_handler.c raycasting/draw_line.c raycasting/find_wall.c
-SRC = cub3D.c $(RC) $(PARS)
+SRC = cub3D.c $(RC) $(PARS) $(GNL)
 
 OBJS = ${SRC:%.c=%.o}
 

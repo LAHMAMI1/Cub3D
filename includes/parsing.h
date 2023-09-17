@@ -8,7 +8,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void	check_args(int argc, char *argv[], t_parse *parse);
 char	**read_file(int fd, t_parse *parse);
+
+void check_all(t_parse *parse);
+void	check_args(int argc, char *argv[], t_parse *parse);
+int check_empty(char **split_file);
 
 #endif

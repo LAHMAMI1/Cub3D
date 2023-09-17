@@ -1,25 +1,52 @@
 #include "../includes/parsing.h"
 
-void check_all(t_parse *parse)
+int check_empty(char **split_file)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (parse->split_file[i])
+	while (split_file[i])
 	{
-		if (parse->split_file[i][0] == 'N' && parse->split_file[i][1] == 'O')
-			check_texture(parse, parse->split_file[i], 0);
-		else if (parse->split_file[i][0] == 'S' && parse->split_file[i][1] == 'O')
-			check_texture(parse, parse->split_file[i], 1);
-		else if (parse->split_file[i][0] == 'W' && parse->split_file[i][1] == 'E')
-			check_texture(parse, parse->split_file[i], 2);
-		else if (parse->split_file[i][0] == 'E' && parse->split_file[i][1] == 'A')
-			check_texture(parse, parse->split_file[i], 3);
-		else if (parse->split_file[i][0] == 'F')
-			check_color(parse, parse->split_file[i], 0);
-		else if (parse->split_file[i][0] == 'C')
-			check_color(parse, parse->split_file[i], 1);
-		
+		j = 0;
+		while (split_file[i][j])
+		{
+			if (!ft_isspace(split_file[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
 	}
+	return (1);
+}
+
+void check_all(t_parse *parse)
+{
+	// int i;
+	// int j;
+
+	parse->split_file = read_file(parse->fd, parse);
+	if (!parse->split_file || check_empty(parse->split_file))
+	{
+		ft_putstr_fd("Error:\nEmpty file", 2);
+		exit(1);
+	}
+	// i = 0;
+	// while (parse->split_file[i])
+	// {
+	// 	j = 0;
+	// 	while (parse->split_file[i][j])
+	// 	{
+	// 		if (ft_isspace(parse->split_file[i][j]))
+	// 			j++;
+	// 		if (parse->)
+	// 		{
+				
+	// 		}
+			
+	// 	}
+		
+		
+	// }
 	
 }
