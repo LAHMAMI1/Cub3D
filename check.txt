@@ -1,3 +1,4 @@
+-> check_empty
 -> check space + new line
 -> check duplicate arguments
 -> check if missing arguments
