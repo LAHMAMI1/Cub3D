@@ -20,6 +20,13 @@ int check_empty(char **split_file)
 	return (1);
 }
 
+// void check_path(t_parse *parse)
+// {
+// 	int fd;
+
+
+// }
+
 int	check_identifier(char *f, char *ab)
 {
 	int i;
@@ -41,16 +48,19 @@ int	check_identifier(char *f, char *ab)
 	return (0);
 }
 
-void check_path(t_parse *parse)
-{
-	
-}
-
 void check_all(t_parse *parse)
 {
 	int i;
+	int check_dup;
 
 	parse->split_file = read_file(parse->fd, parse);
+	check_dup = 0;
+	// i=0;
+	// while (parse->split_file[i])
+	// {
+	// 	printf("%s\n", parse->split_file[i]);
+	// 	i++;
+	// }
 	if (!parse->split_file || check_empty(parse->split_file))
 	{
 		ft_putstr_fd("Error:\nEmpty file", 2);
@@ -60,35 +70,27 @@ void check_all(t_parse *parse)
 	while (parse->split_file[i])
 	{
 		if (check_identifier(parse->split_file[i], "NO "))
-		{
-			printf("NO\n");
-		}
+			check_dup += 1;
 		else if (check_identifier(parse->split_file[i], "SO "))
-		{
-			printf("SO\n");
-		}
+			check_dup += 1;
 		else if (check_identifier(parse->split_file[i], "WE "))
-		{
-			printf("WE\n");
-		}
+			check_dup += 1;
 		else if (check_identifier(parse->split_file[i], "EA "))
-		{
-			printf("EA\n");
-		}
+			check_dup += 1;
 		else if (check_identifier(parse->split_file[i], "F "))
-		{
-			printf("F\n");
-		}
+			check_dup += 1;
 		else if (check_identifier(parse->split_file[i], "C "))
-		{
-			printf("C\n");
-		}
-		else
-		{
-			printf("error\n");
-			exit(1);
-		}
+			check_dup += 1;
 		i++;
 	}
-	
+	if (check_dup > 6)
+	{
+		ft_putstr_fd("Error:\nDuplicate identifier", 2);
+		exit(1);
+	}
+	else if (check_dup < 6)
+	{
+		ft_putstr_fd("Error:\nWrong entries", 2);
+		exit(1);
+	}
 }

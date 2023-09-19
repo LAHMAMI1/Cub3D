@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+int	not_map(char *line);
 char	**read_file(int fd, t_parse *parse);
 
 void check_all(t_parse *parse);
