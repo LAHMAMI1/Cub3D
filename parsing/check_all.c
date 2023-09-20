@@ -1,25 +1,5 @@
 #include "../includes/parsing.h"
 
-int check_empty(char **split_file)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (split_file[i])
-	{
-		j = 0;
-		while (split_file[i][j])
-		{
-			if (!ft_isspace(split_file[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
 // void check_path(t_parse *parse)
 // {
 // 	int fd;
@@ -53,33 +33,29 @@ void check_all(t_parse *parse)
 	int i;
 	int check_dup;
 
-	parse->split_file = read_file(parse->fd, parse);
+	check_empty(parse);
+	read_file(parse);
 	check_dup = 0;
 	// i=0;
-	// while (parse->split_file[i])
+	// while (parse->split_identifier[i])
 	// {
-	// 	printf("%s\n", parse->split_file[i]);
+	// 	printf("%s\n", parse->split_identifier[i]);
 	// 	i++;
 	// }
-	if (!parse->split_file || check_empty(parse->split_file))
-	{
-		ft_putstr_fd("Error:\nEmpty file", 2);
-		exit(1);
-	}
 	i = 0;
-	while (parse->split_file[i])
+	while (parse->split_identifier[i])
 	{
-		if (check_identifier(parse->split_file[i], "NO "))
+		if (check_identifier(parse->split_identifier[i], "NO "))
 			check_dup += 1;
-		else if (check_identifier(parse->split_file[i], "SO "))
+		else if (check_identifier(parse->split_identifier[i], "SO "))
 			check_dup += 1;
-		else if (check_identifier(parse->split_file[i], "WE "))
+		else if (check_identifier(parse->split_identifier[i], "WE "))
 			check_dup += 1;
-		else if (check_identifier(parse->split_file[i], "EA "))
+		else if (check_identifier(parse->split_identifier[i], "EA "))
 			check_dup += 1;
-		else if (check_identifier(parse->split_file[i], "F "))
+		else if (check_identifier(parse->split_identifier[i], "F "))
 			check_dup += 1;
-		else if (check_identifier(parse->split_file[i], "C "))
+		else if (check_identifier(parse->split_identifier[i], "C "))
 			check_dup += 1;
 		i++;
 	}

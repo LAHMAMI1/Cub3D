@@ -96,9 +96,12 @@ typedef struct s_map
 typedef struct s_parse
 {
 	int fd;
+	char *argv;
+	int fd_empty;
 	char *str;
 	char **split_file;
-	
+	char **split_identifier;
+	char **split_map;
 } t_parse;
 
 #endif

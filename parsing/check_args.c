@@ -25,4 +25,5 @@ void	check_args(int argc, char *argv[], t_parse *parse)
 		ft_putstr_fd("Error:\nMap file does not exist", 2);
 		exit(1);
 	}
+	parse->argv = argv[1];
 }
