@@ -39,6 +39,12 @@ void read_map(int fd, t_parse *parse, char *line)
 		ft_putstr_fd("Error:\nthere is no map\n", 1);
 		exit(1);
 	}
+	// int i = 0;
+	// while (parse->split_map[i])
+	// {
+	// 	printf("%s\n", parse->split_map[i]);
+	// 	i++;
+	// }
 }
 
 void	read_file(t_parse *parse)

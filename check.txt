@@ -1,7 +1,6 @@
--> check_empty
+-> check_empty (done)
 -> check space + new line (done)
 -> check duplicate arguments (done)
 -> check if missing arguments (done)
 
--> check the params of the arguments
--> 
+-> check the params of the arguments (done)

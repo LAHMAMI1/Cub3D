@@ -1,13 +1,50 @@
 #include "../includes/parsing.h"
 
-// void check_path(t_parse *parse)
-// {
-// 	int fd;
+int check_path(t_parse *parse, char *line)
+{
+	int i;
 
+	i = 0;
+	parse->path = malloc(sizeof(char) * ft_strlen(line) + 1);
+	while (line[i] && !ft_isspace(line[i]))
+	{
+		parse->path[i] = line[i];
+		i++;
+	}
+	parse->path[i] = '\0';
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	if (line[i])
+	{
+		ft_putstr_fd("Error:\nIdentifier has 2 args insted of path", 2);
+		exit(1);
+	}
+	if (open(parse->path, O_RDONLY) == -1)
+	{
+		ft_putstr_fd("Error:\nPath is not valid", 2);
+		exit(1);
+	}
+	return (1);
+}
 
-// }
+int check_rgb(char *line)
+{
+	int i;
 
-int	check_identifier(char *f, char *ab)
+	i = 0;
+	while (line[i] && !ft_isspace(line[i]))
+		i++;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	if (line[i])
+	{
+		ft_putstr_fd("Error:\nIdentifier has 2 args insted of path", 2);
+		exit(1);
+	}
+	return (1);
+}
+
+int	check_identifier(char *f, char *ab, t_parse *parse)
 {
 	int i;
 
@@ -19,10 +56,9 @@ int	check_identifier(char *f, char *ab)
 		i += ft_strlen(ab);
 		while (f[i] && ft_isspace(f[i]))
 			i++;
-		//nswitch ctrncmp b check path
-		if (!ft_strncmp(f + i, "./", 2) && ft_strlen(ab) == 3)
+		if (check_path(parse, f + i) && ft_strlen(ab) == 3)
 			return (1);
-		if ((f[i] >= '0' && f[i] <= '9') && ft_strlen(ab) == 2)
+		if (check_rgb(f + i) && ft_strlen(ab) == 2)
 			return (1);
 	}
 	return (0);
@@ -45,17 +81,17 @@ void check_all(t_parse *parse)
 	i = 0;
 	while (parse->split_identifier[i])
 	{
-		if (check_identifier(parse->split_identifier[i], "NO "))
+		if (check_identifier(parse->split_identifier[i], "NO ", parse))
 			check_dup += 1;
-		else if (check_identifier(parse->split_identifier[i], "SO "))
+		else if (check_identifier(parse->split_identifier[i], "SO ", parse))
 			check_dup += 1;
-		else if (check_identifier(parse->split_identifier[i], "WE "))
+		else if (check_identifier(parse->split_identifier[i], "WE ", parse))
 			check_dup += 1;
-		else if (check_identifier(parse->split_identifier[i], "EA "))
+		else if (check_identifier(parse->split_identifier[i], "EA ", parse))
 			check_dup += 1;
-		else if (check_identifier(parse->split_identifier[i], "F "))
+		else if (check_identifier(parse->split_identifier[i], "F ", parse))
 			check_dup += 1;
-		else if (check_identifier(parse->split_identifier[i], "C "))
+		else if (check_identifier(parse->split_identifier[i], "C ", parse))
 			check_dup += 1;
 		i++;
 	}

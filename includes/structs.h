@@ -102,6 +102,7 @@ typedef struct s_parse
 	char **split_file;
 	char **split_identifier;
 	char **split_map;
+	char *path;
 } t_parse;
 
 #endif

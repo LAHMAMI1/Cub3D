@@ -17,6 +17,7 @@ void check_all(t_parse *parse);
 void	check_args(int argc, char *argv[], t_parse *parse);
 void	check_empty(t_parse *parse);
 int check_space(char **split_file);
-int check_identifier(char *f, char *ab);
+int check_identifier(char *f, char *ab, t_parse *parse);
+int check_path(t_parse *parse, char *line);
 
 #endif
