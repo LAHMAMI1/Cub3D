@@ -14,8 +14,11 @@ int main(int argc, char *argv[]) {
 //   i = 0;
   check_args(argc, argv, &parse);
   check_all(&parse);
-  
-  
+
+  printf("parse->no = %s\n", parse.no);
+  printf("parse->so = %s\n", parse.so);
+  printf("parse->we = %s\n", parse.we);
+  printf("parse->ea = %s\n", parse.ea);
   init_data(&cub3D);
   cub3D.ptr_mlx = mlx_init();
   cub3D.mlx_win = mlx_new_window(cub3D.ptr_mlx, WIDTH,HEIGHT, "cub3d");

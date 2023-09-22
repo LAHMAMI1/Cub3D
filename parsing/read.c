@@ -18,9 +18,9 @@ int	not_map(char *line)
 
 void read_map(int fd, t_parse *parse, char *line)
 {
-	parse->str = ft_calloc(1, 1);
 	if (line)
 	{
+		parse->str = ft_calloc(1, 1);
 		parse->str = ft_strjoin(parse->str, line);
 		free(line);
 		while (1)
@@ -37,14 +37,9 @@ void read_map(int fd, t_parse *parse, char *line)
 	else
 	{
 		ft_putstr_fd("Error:\nthere is no map\n", 1);
+		close(parse->fd);
 		exit(1);
 	}
-	// int i = 0;
-	// while (parse->split_map[i])
-	// {
-	// 	printf("%s\n", parse->split_map[i]);
-	// 	i++;
-	// }
 }
 
 void	read_file(t_parse *parse)
@@ -63,4 +58,5 @@ void	read_file(t_parse *parse)
 	parse->split_identifier = ft_split(parse->str, '\n');
 	free(parse->str);
 	read_map(parse->fd, parse, line);
+	close(parse->fd);
 }

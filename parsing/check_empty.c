@@ -1,22 +1,23 @@
 #include "../includes/parsing.h"
 
-int check_space(char **split_identifier)
+int check_space(char **split_file)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (split_identifier[i])
+	while (split_file[i])
 	{
 		j = 0;
-		while (split_identifier[i][j])
+		while (split_file[i][j])
 		{
-			if (!ft_isspace(split_identifier[i][j]))
+			if (!ft_isspace(split_file[i][j]))
 				return (0);
 			j++;
 		}
 		i++;
 	}
+	ft_free_split(split_file);
 	return (1);
 }
 
@@ -38,6 +39,7 @@ void check_empty(t_parse *parse)
 	if (!parse->split_file || check_space(parse->split_file))
 	{
 		ft_putstr_fd("Error:\nEmpty file", 2);
+		free(parse->str);
 		close(parse->fd_empty);
 		exit(1);
 	}

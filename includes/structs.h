@@ -103,6 +103,12 @@ typedef struct s_parse
 	char **split_identifier;
 	char **split_map;
 	char *path;
+	int j;
+	int check_dup;
+	char *no;
+	char *so;
+	char *we;
+	char *ea;
 } t_parse;
 
 #endif

@@ -18,6 +18,12 @@ void	check_args(int argc, char *argv[], t_parse *parse);
 void	check_empty(t_parse *parse);
 int check_space(char **split_file);
 int check_identifier(char *f, char *ab, t_parse *parse);
-int check_path(t_parse *parse, char *line);
+char *check_path(t_parse *parse, char *line);
+
+void check_no(t_parse *parse, char *line);
+void check_so(t_parse *parse, char *line);
+void check_we(t_parse *parse, char *line);
+void check_ea(t_parse *parse, char *line);
+
 
 #endif
