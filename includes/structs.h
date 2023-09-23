@@ -102,7 +102,7 @@ typedef struct s_parse
 	char **split_file;
 	char **split_identifier;
 	char **split_map;
-	char *path;
+	char *arg_id;
 	int j;
 	int check_dup;
 	char *no;
