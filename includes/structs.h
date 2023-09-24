@@ -91,8 +91,6 @@ typedef struct s_map
 	int ceiling_color;
 } t_map;
 
-
-
 typedef struct s_parse
 {
 	int fd;
@@ -109,6 +107,9 @@ typedef struct s_parse
 	char *so;
 	char *we;
 	char *ea;
+	char **split_color;
+	int f_color;
+	int c_color;
 } t_parse;
 
 #endif

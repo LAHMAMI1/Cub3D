@@ -19,6 +19,8 @@ int main(int argc, char *argv[]) {
   printf("parse->so = %s\n", parse.so);
   printf("parse->we = %s\n", parse.we);
   printf("parse->ea = %s\n", parse.ea);
+  printf("parse->f_color = %d\n", parse.f_color);
+  printf("parse->c_color = %d\n", parse.c_color);
   init_data(&cub3D);
   cub3D.ptr_mlx = mlx_init();
   cub3D.mlx_win = mlx_new_window(cub3D.ptr_mlx, WIDTH,HEIGHT, "cub3d");

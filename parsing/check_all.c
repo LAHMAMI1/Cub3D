@@ -46,9 +46,9 @@ void check_all(t_parse *parse)
 		else if (check_identifier(parse->split_identifier[i], "EA ", parse))
 			check_nswe(parse, parse->split_identifier[i] + parse->j, &parse->ea);
 		else if (check_identifier(parse->split_identifier[i], "F ", parse))
-			parse->check_dup += 1;
+			int_to_hex(parse, parse->split_identifier[i] + parse->j, &parse->f_color);
 		else if (check_identifier(parse->split_identifier[i], "C ", parse))
-			parse->check_dup += 1;
+			int_to_hex(parse, parse->split_identifier[i] + parse->j, &parse->c_color);
 		i++;
 	}
 	if (parse->check_dup > 6)
@@ -61,4 +61,5 @@ void check_all(t_parse *parse)
 		ft_putstr_fd("Error:\nWrong entries", 2);
 		exit(1);
 	}
+	check_map(parse);
 }

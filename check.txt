@@ -4,3 +4,13 @@
 -> check if missing arguments (done)
 
 -> check the params of the arguments (done)
+
+1. Check if the map is surrounded by walls (1's) on all sides.
+2. Check if there are any spaces in the map that are not surrounded by walls.
+3. Check if there are any missing walls in the map.
+4. Check if there are any invalid characters in the map (characters other than 0, 1, 2, N, S, E, W).
+5. Check if there is only one player position (N, S, E, W).
+6. Check if the player position is valid (not in a wall or outside the map).
+7. Check if there are any missing or invalid textures in the map.
+8. Check if there are any empty lines in the map.
+9. Check if there are any trailing spaces or tabs in the lines.
