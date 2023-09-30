@@ -84,7 +84,7 @@ typedef struct s_map
 {
 	int		width;
 	int		height;
-	char	**map;
+	int	**map;
 	t_point	player;
 	char 	player_direction;
 	int floor_color;
@@ -110,6 +110,10 @@ typedef struct s_parse
 	char **split_color;
 	int f_color;
 	int c_color;
+	int p;
+	int px;
+	int py;
+	char p_d;
 } t_parse;
 
 #endif

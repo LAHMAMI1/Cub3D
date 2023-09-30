@@ -29,4 +29,14 @@ void int_to_hex(t_parse *parse, char *line, int *hex);
 
 void check_map(t_parse *parse);
 int	composed_map(char *line);
+
+int check_player(t_parse *parse, int y, char *line);
+int	no_line(t_parse *parse);
+int count_line(char **split_map);
+
+int	wall_map(t_parse *parse);
+int	first_line(t_parse *parse);
+int	last_line(t_parse *parse, int y, int x);
+int	check_around(char **map, int y, int x);
+
 #endif

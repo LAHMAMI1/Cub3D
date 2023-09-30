@@ -32,7 +32,6 @@ void read_map(int fd, t_parse *parse, char *line)
 			free(line);
 		}
 		parse->split_map = ft_split(parse->str, '\n');
-		free(parse->str);
 	}
 	else
 	{
