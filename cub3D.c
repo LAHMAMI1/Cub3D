@@ -10,18 +10,18 @@ int main(int argc, char *argv[]) {
 
   t_cub3D cub3D;
   t_parse *parse;
-//   int i;
-//   i = 0;
+  t_map *map;
+
+//parsing the game
   parse = malloc(sizeof(t_parse));
   check_args(argc, argv, parse);
   check_all(parse);
 
-  printf("parse->no = %s\n", parse->no);
-  printf("parse->so = %s\n", parse->so);
-  printf("parse->we = %s\n", parse->we);
-  printf("parse->ea = %s\n", parse->ea);
-  printf("parse->f_color = %d\n", parse->f_color);
-  printf("parse->c_color = %d\n", parse->c_color);
+//init the map
+  map = malloc(sizeof(t_map));
+  init_s_map(map, parse);
+  print_arg_map(map);
+
   init_data(&cub3D);
   cub3D.ptr_mlx = mlx_init();
   cub3D.mlx_win = mlx_new_window(cub3D.ptr_mlx, WIDTH,HEIGHT, "cub3d");

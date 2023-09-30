@@ -39,4 +39,8 @@ int	first_line(t_parse *parse);
 int	last_line(t_parse *parse, int y, int x);
 int	check_around(char **map, int y, int x);
 
+int max_char_length(char **map);
+int **char_to_int(char **map);
+void init_s_map(t_map *map, t_parse *parse);
+void print_arg_map(t_map *map);
 #endif
