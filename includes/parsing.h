@@ -13,7 +13,7 @@ int	not_map(char *line);
 void	read_file(t_parse *parse);
 void	read_map(int fd, t_parse *parse, char *line);
 
-void check_all(t_parse *parse);
+void check_all(t_parse *parse, int argc, char *argv[]);
 void	check_args(int argc, char *argv[], t_parse *parse);
 void	check_empty(t_parse *parse);
 int check_space(char **split_file);
@@ -22,6 +22,9 @@ void check_multi_args(t_parse *parse, char *line);
 
 char *check_path(t_parse *parse, char *line);
 void check_nswe(t_parse *parse, char *line, char **id);
+// void check_so(t_parse *parse, char *line);
+// void check_we(t_parse *parse, char *line);
+// void check_ea(t_parse *parse, char *line);
 
 void check_len(t_parse *parse);
 void check_color(t_parse *parse, char *line);
@@ -40,7 +43,7 @@ int	last_line(t_parse *parse, int y, int x);
 int	check_around(char **map, int y, int x);
 
 int max_char_length(char **map);
-int **char_to_int(char **map);
+int **char_to_int(char **map, int height, int width);
 void init_s_map(t_map *map, t_parse *parse);
 void print_arg_map(t_map *map);
 #endif

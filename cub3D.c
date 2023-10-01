@@ -14,8 +14,7 @@ int main(int argc, char *argv[]) {
 
 //parsing the game
   parse = malloc(sizeof(t_parse));
-  check_args(argc, argv, parse);
-  check_all(parse);
+  check_all(parse, argc, argv);
 
 //init the map
   map = malloc(sizeof(t_map));

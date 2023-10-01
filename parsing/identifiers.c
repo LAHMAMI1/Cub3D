@@ -35,9 +35,6 @@ char	*check_path(t_parse *parse, char *line)
 
 void check_nswe(t_parse *parse, char *line, char **id)
 {
-	*id = malloc(sizeof(char) * ft_strlen(line) + 1);
 	*id = check_path(parse, line);
 	parse->j = 0;
-	parse->check_dup += 1;
 }
-

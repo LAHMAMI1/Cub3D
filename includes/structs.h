@@ -89,6 +89,10 @@ typedef struct s_map
 	char 	player_direction;
 	int floor_color;
 	int ceiling_color;
+	char *n;
+	char *s;
+	char *w;
+	char *e;
 } t_map;
 
 typedef struct s_parse
@@ -102,11 +106,7 @@ typedef struct s_parse
 	char **split_map;
 	char *arg_id;
 	int j;
-	int check_dup;
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
+	char **nswe;
 	char **split_color;
 	int f_color;
 	int c_color;
@@ -114,6 +114,7 @@ typedef struct s_parse
 	int px;
 	int py;
 	char p_d;
+	int error;
 } t_parse;
 
 #endif

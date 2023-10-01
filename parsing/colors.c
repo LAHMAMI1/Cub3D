@@ -18,7 +18,7 @@ void	check_len(t_parse *parse)
 		i++;
 	if (i != 3 || count != 2)
 	{
-		ft_putstr_fd("Error:\nNot valid color", 2);
+		ft_putstr_fd("Error:\nNot valid color 1", 2);
 		exit(1);
 	}
 }
@@ -52,11 +52,16 @@ void	check_color(t_parse *parse, char *line)
 
 void	int_to_hex(t_parse *parse, char *line, int *hex)
 {
+	int r;
+	int g;
+	int b;
+
 	check_color(parse, line);
-	int r = ft_atoi(parse->split_color[0]);
-	int g = ft_atoi(parse->split_color[1]);
-	int b = ft_atoi(parse->split_color[2]);
+	r = ft_atoi(parse->split_color[0]);
+	g = ft_atoi(parse->split_color[1]);
+	b = ft_atoi(parse->split_color[2]);
+	ft_free_split(parse->split_color);
+	free(parse->arg_id);
 	*hex = (r << 16) | (g << 8) | b;
 	parse->j = 0;
-	parse->check_dup += 1;
 }

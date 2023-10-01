@@ -39,7 +39,6 @@ void check_empty(t_parse *parse)
 	if (!parse->split_file || check_space(parse->split_file))
 	{
 		ft_putstr_fd("Error:\nEmpty file", 2);
-		free(parse->str);
 		close(parse->fd_empty);
 		exit(1);
 	}

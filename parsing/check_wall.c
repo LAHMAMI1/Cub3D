@@ -63,6 +63,8 @@ int	wall_map(t_parse *parse)
 		while (ft_isspace(parse->split_map[y][x]))
 			x++;
 		i = x;
+		if(last_line(parse, y, x))
+			return (1);
 		while (parse->split_map[y][x])
 		{
 			if (parse->split_map[y][i] != '1'
@@ -73,8 +75,6 @@ int	wall_map(t_parse *parse)
 				return (1);
 			x++;
 		}
-		if(last_line(parse, y, x))
-			return (1);
 		y++;
 	}
 	return (0);
