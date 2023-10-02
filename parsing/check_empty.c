@@ -1,9 +1,9 @@
 #include "../includes/parsing.h"
 
-int check_space(char **split_file)
+int	check_space(char **split_file)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (split_file[i])
@@ -21,7 +21,7 @@ int check_space(char **split_file)
 	return (1);
 }
 
-void check_empty(t_parse *parse)
+void	check_empty(t_parse *parse)
 {
 	char	*line;
 

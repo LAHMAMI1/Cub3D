@@ -52,9 +52,9 @@ void	check_color(t_parse *parse, char *line)
 
 void	int_to_hex(t_parse *parse, char *line, int *hex)
 {
-	int r;
-	int g;
-	int b;
+	int	r;
+	int	g;
+	int	b;
 
 	check_color(parse, line);
 	r = ft_atoi(parse->split_color[0]);

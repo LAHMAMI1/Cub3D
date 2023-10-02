@@ -25,57 +25,44 @@ int	first_line(t_parse *parse)
 	while (parse->split_map[0][x])
 	{
 		if (!ft_strchr("1 	", parse->split_map[0][x]))
-		   return (1);
+			return (1);
 		x++;
 	}
 	return (0);
 }
 
-int	last_line(t_parse *parse, int y, int x)
+int	check_wall(t_parse *parse)
 {
-	if (y == (count_line(parse->split_map) - 1))
+	int		y;
+	int		x;
+	char	*tmp;
+
+	y = 0;
+	while (parse->split_map[y])
 	{
+		tmp = ft_strtrim(parse->split_map[y], " ");
 		x = 0;
-		while (parse->split_map[y][x])
+		while (tmp[x])
 		{
-			while (ft_isspace(parse->split_map[y][x]))
-				x++;
-			if (!ft_strchr("1 	", parse->split_map[y][x]))
-				return (1);
+			if (tmp[0] != '1' || tmp[ft_strlen(tmp) - 1] != '1'
+				|| check_around(parse->split_map, y, x))
+				{
+					free(tmp);
+					return (1);
+				}
 			x++;
 		}
+		free(tmp);
+		y++;
 	}
 	return (0);
 }
 
 int	wall_map(t_parse *parse)
 {
-	int	y;
-	int	x;
-	int	i;
-
-	if(first_line(parse))
+	if (first_line(parse))
 		return (1);
-	y = 0;
-	while (parse->split_map[y])
-	{
-		x = 0;
-		while (ft_isspace(parse->split_map[y][x]))
-			x++;
-		i = x;
-		if(last_line(parse, y, x))
-			return (1);
-		while (parse->split_map[y][x])
-		{
-			if (parse->split_map[y][i] != '1'
-				|| parse->split_map[y][ft_strlen(parse->split_map[y])
-				- 1] != '1')
-				return (1);
-			if (check_around(parse->split_map, y, x))
-				return (1);
-			x++;
-		}
-		y++;
-	}
+	if (check_wall(parse))
+		return (1);
 	return (0);
 }

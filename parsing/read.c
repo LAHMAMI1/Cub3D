@@ -16,7 +16,17 @@ int	not_map(char *line)
 	return (1);
 }
 
-void read_map(int fd, t_parse *parse, char *line)
+int	line_space(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && ft_isspace(line[i]))
+		i++;
+	return (line[i]=='\n' || line[i]=='\0');
+}
+
+void	read_map(int fd, t_parse *parse, char *line)
 {
 	if (line)
 	{
@@ -25,6 +35,7 @@ void read_map(int fd, t_parse *parse, char *line)
 		free(line);
 		while (1)
 		{
+
 			line = get_next_line(fd);
 			if (!line)
 				break ;
@@ -51,7 +62,8 @@ void	read_file(t_parse *parse)
 		line = get_next_line(parse->fd);
 		if (!line || not_map(line))
 			break ;
-		parse->str = ft_strjoin(parse->str, line);
+		if(!line_space(line))
+			parse->str = ft_strjoin(parse->str, line);
 		free(line);
 	}
 	parse->split_identifier = ft_split(parse->str, '\n');

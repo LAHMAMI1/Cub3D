@@ -14,7 +14,7 @@ int	composed_map(char *line)
 	return (0);
 }
 
-int check_player(t_parse *parse, int y, char *line)
+int	check_player(t_parse *parse, int y, char *line)
 {
 	int	x;
 
@@ -45,7 +45,8 @@ int	no_line(t_parse *parse)
 	i = 0;
 	while (parse->str[i])
 	{
-		if (parse->str[i] == '\n' && parse->str[i + 1] == '\n')
+		if (parse->str[ft_strlen(parse->str) - 1] == '\n'
+			|| (parse->str[i] == '\n' && parse->str[i + 1] == '\n'))
 		{
 			free(parse->str);
 			return (1);
@@ -56,19 +57,9 @@ int	no_line(t_parse *parse)
 	return (0);
 }
 
-int count_line(char **split_map)
-{
-	int i;
-
-	i = 0;
-	while (split_map[i])
-		i++;
-	return (i);
-}
-
 void	check_map(t_parse *parse)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	parse->p = 0;
@@ -82,20 +73,9 @@ void	check_map(t_parse *parse)
 		check_player(parse, y, parse->split_map[y]);
 		y++;
 	}
-	if (no_line(parse))
+	if (no_line(parse) || parse->p == 0 || wall_map(parse))
 	{
-		ft_putstr_fd("Error:\nthere's a new line\n", 2);
+		ft_putstr_fd("Error:\nInvalid map\n", 2);
 		exit(1);
-	}
-	if (parse->p == 0)
-	{
-		ft_putstr_fd("Error:\nThere is no player\n", 2);
-		exit(1);
-	}
-	if (wall_map(parse))
-	{
-		ft_putstr_fd("Error:\nMap is not surrounded by walls\n", 2);
-		exit(1);	
 	}
 }
-

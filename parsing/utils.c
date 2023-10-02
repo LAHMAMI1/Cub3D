@@ -1,8 +1,9 @@
 #include "../includes/parsing.h"
 
-int max_char_length(char **map) {
-	int i;
-	int max;
+int	max_char_length(char **map)
+{
+	int	i;
+	int	max;
 
 	i = 0;
 	max = 0;
@@ -15,34 +16,45 @@ int max_char_length(char **map) {
 	return (max);
 }
 
-int **char_to_int(char **map, int height, int width)
+int	count_line(char **split_map)
 {
-    int **int_map;
-    int i;
-	int j;
+	int	i;
+
+	i = 0;
+	while (split_map[i])
+		i++;
+	return (i);
+}
+
+int	**char_to_int(char **map, int height, int width)
+{
+	int	**int_map;
+	int	i;
+	int	j;
 
 	int_map = malloc(sizeof(int *) * (height + 1));
 	i = 0;
-    while (map[i])
+	while (map[i])
 	{
 		int_map[i] = ft_calloc(width + 1, sizeof(int));
-        j = 0;
-        while (map[i][j])
+		j = 0;
+		while (map[i][j])
 		{
-            if (map[i][j] == ' ' || map[i][j] == '\t' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
-                int_map[i][j] = 0;
+			if (map[i][j] == ' ' || map[i][j] == '\t' || map[i][j] == 'N'
+				|| map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+				int_map[i][j] = 0;
 			else
-                int_map[i][j] = (unsigned char)(map[i][j] - '0');
-            j++;
-        }
-        int_map[i][j] = 0;
-        i++;
-    }
-    int_map[i] = NULL;
-    return int_map;
+				int_map[i][j] = (unsigned char)(map[i][j] - '0');
+			j++;
+		}
+		int_map[i][j] = 0;
+		i++;
+	}
+	int_map[i] = NULL;
+	return (int_map);
 }
 
-void init_s_map(t_map *map, t_parse *parse)
+void	init_s_map(t_map *map, t_parse *parse)
 {
 	map->height = count_line(parse->split_map);
 	map->width = max_char_length(parse->split_map);
@@ -58,10 +70,10 @@ void init_s_map(t_map *map, t_parse *parse)
 	map->e = parse->nswe[3];
 }
 
-void print_arg_map(t_map *map)
+void	print_arg_map(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map->height)

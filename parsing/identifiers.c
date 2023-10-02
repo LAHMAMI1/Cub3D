@@ -1,6 +1,6 @@
 #include "../includes/parsing.h"
 
-void check_multi_args(t_parse *parse, char *line)
+void	check_multi_args(t_parse *parse, char *line)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ char	*check_path(t_parse *parse, char *line)
 	return (parse->arg_id);
 }
 
-void check_nswe(t_parse *parse, char *line, char **id)
+void	check_nswe(t_parse *parse, char *line, char **id)
 {
 	*id = check_path(parse, line);
 	parse->j = 0;
