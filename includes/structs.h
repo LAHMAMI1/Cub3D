@@ -114,6 +114,7 @@ typedef struct s_parse
 	int px;
 	int py;
 	char p_d;
+  int count;
 } t_parse;
 
 #endif

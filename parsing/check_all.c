@@ -15,6 +15,7 @@ int	check_identifier(char *f, char *ab, t_parse *parse)
 		if (f[i])
 		{
 			parse->j = i;
+			parse->count += 1;
 			return (1);
 		}
 		else
@@ -60,13 +61,13 @@ void	check_all(t_parse *parse, int argc, char *argv[])
 	check_args(argc, argv, parse);
 	check_empty(parse);
 	read_file(parse);
-	if (count_line(parse->split_identifier) > 6
-		|| count_line(parse->split_identifier) < 6)
+	parse->count = 0;
+	parse->nswe = ft_calloc(4, sizeof(char *));
+	check_informations(parse);
+	if (parse->count != 6)
 	{
 		ft_putstr_fd("Error:\nWrong entries 1", 2);
 		exit(1);
 	}
-	parse->nswe = ft_calloc(4, sizeof(char *));
-	check_informations(parse);
 	check_map(parse);
 }
