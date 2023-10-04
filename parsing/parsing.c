@@ -57,5 +57,6 @@ void init_data(t_cub3D *cub3D) {
       cub3D->points[i][j] = initialMatrix[i][j];
     }
   }
+  
   init_ray_params(cub3D);
 }

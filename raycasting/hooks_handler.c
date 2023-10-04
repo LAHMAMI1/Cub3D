@@ -150,15 +150,6 @@ int * ceiling_floor_buffering()
 }
 void set_texturs(t_cub3D *cub3D, double ra ,int flag)
 {
-  cub3D->texture_SO.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &cub3D->texture_SO.width,&cub3D->texture_SO.height);
-  cub3D->texture_SO.addr =  mlx_get_data_addr(cub3D->texture_SO.img, &cub3D->texture_SO.bits_per_pixel, &cub3D->texture_SO.line_length, &cub3D->texture_SO.endian);
-  cub3D->texture_NO.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/NO.xpm", &cub3D->texture_NO.width,&cub3D->texture_NO.height);
-  cub3D->texture_NO.addr =  mlx_get_data_addr(cub3D->texture_NO.img, &cub3D->texture_NO.bits_per_pixel, &cub3D->texture_NO.line_length, &cub3D->texture_NO.endian);
-  cub3D->texture_WE.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/WE.xpm", &cub3D->texture_WE.width,&cub3D->texture_WE.height);
-  cub3D->texture_WE.addr =  mlx_get_data_addr(cub3D->texture_WE.img, &cub3D->texture_WE.bits_per_pixel, &cub3D->texture_WE.line_length, &cub3D->texture_WE.endian);
-  cub3D->texture_EA.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/EA.xpm", &cub3D->texture_EA.width,&cub3D->texture_EA.height);
-  cub3D->texture_EA.addr =  mlx_get_data_addr(cub3D->texture_EA.img, &cub3D->texture_EA.bits_per_pixel, &cub3D->texture_EA.line_length, &cub3D->texture_EA.endian);
-  
   if(flag == 1)
   {
     if(ra > 0 && ra < M_PI)
@@ -195,8 +186,8 @@ void draw_rays_2D(t_cub3D *cub3D) {
   // void *img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &width,&height);
   // data_addr =  mlx_get_data_addr(img, &cub3D->data.bits_per_pixel, &cub3D->data.line_length, &cub3D->data.endian);
   //-------------------------------------------------------//
-  // cub3D->texture.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &cub3D->texture.width,&cub3D->texture.height);
-  // cub3D->texture.addr =  mlx_get_data_addr(cub3D->texture.img, &cub3D->texture.bits_per_pixel, &cub3D->texture.line_length, &cub3D->texture.endian);
+  cub3D->texture.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &cub3D->texture.width,&cub3D->texture.height);
+  cub3D->texture.addr =  mlx_get_data_addr(cub3D->texture.img, &cub3D->texture.bits_per_pixel, &cub3D->texture.line_length, &cub3D->texture.endian);
 
 
 
