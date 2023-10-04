@@ -35,6 +35,16 @@ char	*check_path(t_parse *parse, char *line)
 
 void	check_nswe(t_parse *parse, char *line, char **id)
 {
+	if(*id)
+		free(*id);
 	*id = check_path(parse, line);
 	parse->j = 0;
+	if (*id == parse->nswe[0])
+		parse->count[0]++;
+	else if (*id == parse->nswe[1])
+		parse->count[1]++;
+	else if (*id == parse->nswe[2])
+		parse->count[2]++;
+	else if (*id == parse->nswe[3])
+		parse->count[3]++;
 }
