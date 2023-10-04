@@ -115,22 +115,58 @@ void calcul_ray_params(t_cub3D *cub3D, t_ray *ray, double ray_angle) {
       (ray->ray_angle < (0.5 * M_PI) || ray->ray_angle > (1.5 * M_PI));
   ray->ray_facing_left = !ray->ray_facing_right;
 }
-
+int *textures_buffering()
+{
+  int *buffer;
+  buffer = malloc(sizeof(int) * (WIDTH * HEIGHT));
+  int i = 0;
+  int j = 0;
+  //need to change Vector to width and height of the texture
+  while( i < VECTOR)
+  {
+    j = 0;
+    while(j < VECTOR)
+    {
+      if(i%8 && j % 8)
+        buffer[i * VECTOR + j] =0xA76F6F;
+      else
+        buffer[i * VECTOR + j] =  0xEAB2A0;
+      j++;
+    }
+    i++;
+  }
+  return buffer;
+}
+int * ceiling_floor_buffering()
+{
+  int *buffer;
+  buffer = malloc(sizeof(int) * (WIDTH * HEIGHT));
+  int i = 0;
+  while (i < (WIDTH * HEIGHT) / 2)
+    buffer[i++] = 0xDAFFFB;
+  while (i < WIDTH * HEIGHT)
+    buffer[i++] = 0xEAC696;
+  return buffer;
+}
 void draw_rays_2D(t_cub3D *cub3D) {
   double ra;
   t_point h_inter;
   t_point v_inter;
+  t_point inter;
   double h_distance;
   double v_distance;
   double final_distance;
+  int *buffer;
+  int *texture_buffer;
   int i;
   h_distance = INT_MAX;
   v_distance = INT_MAX;
   ra = cub3D->player.retation_angle - DEGREE * 30;
   ra = norm_angle(ra);
+  buffer = ceiling_floor_buffering();
+  texture_buffer = textures_buffering();  
   i = 0;
   while (i < WIDTH) {
-    // printf("ra = %f\n", ra);
     h_inter = check_horizontal_intersection(cub3D, ra);
     h_distance = distance_between_points(cub3D->player.px, cub3D->player.py,
                                          h_inter.x, h_inter.y);
@@ -138,41 +174,60 @@ void draw_rays_2D(t_cub3D *cub3D) {
     v_inter = check_vertical_intersection(cub3D, ra);
     v_distance = distance_between_points(cub3D->player.px, cub3D->player.py,
                                          v_inter.x, v_inter.y);
-    if (h_distance < v_distance) {
-      // draw_line(*cub3D, (t_point){cub3D->player.px, cub3D->player.py, 0xEAB2A0},
-      //           (t_point){h_inter.x, h_inter.y, 0x00FF00});
+    if (h_distance < v_distance){
+      inter = h_inter;
       final_distance = h_distance;
-
-    } else {
-      // draw_line(*cub3D, (t_point){cub3D->player.px, cub3D->player.py, 0xEAB2A0},
-      //           (t_point){v_inter.x, v_inter.y, 0x00FF00});
+    }
+    else{
+      inter = v_inter;
       final_distance = v_distance;
     }
     //---------------3D------------------//
     double line_h;
     double new_angle;
+    int top_pixel;
+    int bottom_pixel;
+    int texture_x;
+    int texture_y;
+    int color;
+    int j ;
     new_angle = cub3D->player.retation_angle - ra;
     final_distance *= cos(new_angle);
     line_h = (64 * WIDTH) / final_distance;
-    if (line_h > HEIGHT)
-      line_h = HEIGHT;
-    if (h_distance < v_distance) {
-      draw_rectangle(
-          cub3D,
-          (t_point){i, ((double)HEIGHT / 2) - (line_h / 2), 0xEADBC8},
-          line_h, 2);
-    } else {
-
-      draw_rectangle(
-          cub3D,
-          (t_point){i, ((double)HEIGHT / 2) - (line_h / 2), 0xDAC0A3},
-          line_h, 2);
+    top_pixel = ((double)HEIGHT / 2) - (line_h / 2);
+    bottom_pixel = ((double)HEIGHT / 2) + (line_h / 2);
+    if(top_pixel < 0)
+      top_pixel = 0;
+    if(bottom_pixel > HEIGHT)
+      bottom_pixel = HEIGHT;
+     //-----------------------------------------------------//
+    if(h_distance < v_distance)
+      texture_x = (int)h_inter.x % 64;
+    else
+      texture_x = (int)v_inter.y % 64;
+    j = top_pixel;
+    while(j < bottom_pixel)
+    {
+      int distance_from_top = j + (line_h / 2) - (HEIGHT / 2);
+      //need to change 64 to the width of the texture
+       int texture_y = distance_from_top * (64 / line_h);
+       buffer[j * WIDTH + i] = texture_buffer[texture_y * 64 + texture_x];
+       j++;
     }
+
     //------------------------------------------------------------------//
     i++;
     ra += (60.0 / WIDTH) * DEGREE;
     ra = norm_angle(ra);
   }
+  i = 0;
+  while (i < WIDTH * HEIGHT)
+  {
+    ((int *)cub3D->data.addr)[i] = buffer[i];
+    i++;
+  }
+  free(texture_buffer);
+  free(buffer);
 }
 void draw_all_rays(t_cub3D *cub3D) {
   int i;
@@ -217,10 +272,10 @@ void draw_new_move(t_cub3D *cub3D) {
   static int var;
   if (var > 1) {
     int i = 0;
-    while (i < (HEIGHT * WIDTH) / 2)
-      ((int *)cub3D->data.addr)[i++] = 0xCAEDFF;
-    while (i < HEIGHT * WIDTH)
-      ((int *)cub3D->data.addr)[i++] = 0xC08261;
+    // while (i < (HEIGHT * WIDTH) / 2)
+    //   ((int *)cub3D->data.addr)[i++] = 0xCAEDFF;
+    // while (i < HEIGHT * WIDTH)
+    //   ((int *)cub3D->data.addr)[i++] = 0xC08261;
     // draw_2d_map(*cub3D);
     update_player(cub3D);
     draw_player(cub3D);

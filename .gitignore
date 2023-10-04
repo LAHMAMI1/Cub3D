@@ -1,0 +1,4 @@
+*.o
+cub3D
+*/libft.a
+**/.DS_Store
