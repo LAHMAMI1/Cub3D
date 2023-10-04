@@ -148,6 +148,32 @@ int * ceiling_floor_buffering()
     buffer[i++] = 0xEAC696;
   return buffer;
 }
+void set_texturs(t_cub3D *cub3D, double ra ,int flag)
+{
+  cub3D->texture_SO.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &cub3D->texture_SO.width,&cub3D->texture_SO.height);
+  cub3D->texture_SO.addr =  mlx_get_data_addr(cub3D->texture_SO.img, &cub3D->texture_SO.bits_per_pixel, &cub3D->texture_SO.line_length, &cub3D->texture_SO.endian);
+  cub3D->texture_NO.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/NO.xpm", &cub3D->texture_NO.width,&cub3D->texture_NO.height);
+  cub3D->texture_NO.addr =  mlx_get_data_addr(cub3D->texture_NO.img, &cub3D->texture_NO.bits_per_pixel, &cub3D->texture_NO.line_length, &cub3D->texture_NO.endian);
+  cub3D->texture_WE.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/WE.xpm", &cub3D->texture_WE.width,&cub3D->texture_WE.height);
+  cub3D->texture_WE.addr =  mlx_get_data_addr(cub3D->texture_WE.img, &cub3D->texture_WE.bits_per_pixel, &cub3D->texture_WE.line_length, &cub3D->texture_WE.endian);
+  cub3D->texture_EA.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/EA.xpm", &cub3D->texture_EA.width,&cub3D->texture_EA.height);
+  cub3D->texture_EA.addr =  mlx_get_data_addr(cub3D->texture_EA.img, &cub3D->texture_EA.bits_per_pixel, &cub3D->texture_EA.line_length, &cub3D->texture_EA.endian);
+  
+  if(flag == 1)
+  {
+    if(ra > 0 && ra < M_PI)
+      cub3D->texture = cub3D->texture_SO;
+    else
+      cub3D->texture = cub3D->texture_NO;
+
+  }else
+  {
+    if(ra > (0.5 * M_PI) && ra < (1.5 * M_PI))
+      cub3D->texture = cub3D->texture_WE;
+    else
+      cub3D->texture = cub3D->texture_EA;
+  }
+}
 void draw_rays_2D(t_cub3D *cub3D) {
   double ra;
   t_point h_inter;
@@ -162,6 +188,18 @@ void draw_rays_2D(t_cub3D *cub3D) {
   h_distance = INT_MAX;
   v_distance = INT_MAX;
   ra = cub3D->player.retation_angle - DEGREE * 30;
+  //-------------------------------------------------------//
+  // int width;
+  // int height;
+  // char *data_addr;
+  // void *img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &width,&height);
+  // data_addr =  mlx_get_data_addr(img, &cub3D->data.bits_per_pixel, &cub3D->data.line_length, &cub3D->data.endian);
+  //-------------------------------------------------------//
+  // cub3D->texture.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, "./textures/SO.xpm", &cub3D->texture.width,&cub3D->texture.height);
+  // cub3D->texture.addr =  mlx_get_data_addr(cub3D->texture.img, &cub3D->texture.bits_per_pixel, &cub3D->texture.line_length, &cub3D->texture.endian);
+
+
+
   ra = norm_angle(ra);
   buffer = ceiling_floor_buffering();
   texture_buffer = textures_buffering();  
@@ -202,16 +240,21 @@ void draw_rays_2D(t_cub3D *cub3D) {
       bottom_pixel = HEIGHT;
      //-----------------------------------------------------//
     if(h_distance < v_distance)
+    { set_texturs(cub3D, ra, 1);
       texture_x = (int)h_inter.x % 64;
+    }
     else
+    { set_texturs(cub3D, ra, 0);
       texture_x = (int)v_inter.y % 64;
+    }
+
     j = top_pixel;
     while(j < bottom_pixel)
     {
       int distance_from_top = j + (line_h / 2) - (HEIGHT / 2);
       //need to change 64 to the width of the texture
-       int texture_y = distance_from_top * (64 / line_h);
-       buffer[j * WIDTH + i] = texture_buffer[texture_y * 64 + texture_x];
+       int texture_y = distance_from_top * (cub3D->texture.height / line_h);
+       buffer[j * WIDTH + i] = *(int *)(cub3D->texture.addr + (texture_y * cub3D->texture.line_length )+ texture_x * (cub3D->texture.bits_per_pixel / 8));
        j++;
     }
 
@@ -228,6 +271,9 @@ void draw_rays_2D(t_cub3D *cub3D) {
   }
   free(texture_buffer);
   free(buffer);
+  
+
+ 
 }
 void draw_all_rays(t_cub3D *cub3D) {
   int i;

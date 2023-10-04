@@ -18,6 +18,8 @@ typedef struct s_data {
   int bits_per_pixel;
   int line_length;
   int endian;
+  int height;
+  int width;
 } t_data;
 
 typedef struct s_point {
@@ -76,6 +78,11 @@ typedef struct s_cub3D {
   int **points;
   t_player player;
   t_data data;
+  t_data texture_NO;
+  t_data texture_SO;
+  t_data texture_WE;
+  t_data texture_EA;
+  t_data texture;
   t_ray_params ray_params;
   // t_ray ray;
 } t_cub3D;
