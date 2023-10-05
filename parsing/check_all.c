@@ -26,33 +26,39 @@ int	check_identifier(char *f, char *ab, t_parse *parse)
 	return (0);
 }
 
-void	check_informations(t_parse *parse)
+void    check_informations(t_parse *parse)
 {
-	int	i;
+    int    i;
 
-	i = 0;
-	while (parse->split_identifier[i])
-	{
-		if (check_identifier(parse->split_identifier[i], "NO ", parse))
-			check_nswe(parse, parse->split_identifier[i] + parse->j,
-				&parse->nswe[0]);
-		else if (check_identifier(parse->split_identifier[i], "SO ", parse))
-			check_nswe(parse, parse->split_identifier[i] + parse->j,
-				&parse->nswe[1]);
-		else if (check_identifier(parse->split_identifier[i], "WE ", parse))
-			check_nswe(parse, parse->split_identifier[i] + parse->j,
-				&parse->nswe[2]);
-		else if (check_identifier(parse->split_identifier[i], "EA ", parse))
-			check_nswe(parse, parse->split_identifier[i] + parse->j,
-				&parse->nswe[3]);
-		else if (check_identifier(parse->split_identifier[i], "F ", parse))
-			int_to_hex(parse, parse->split_identifier[i] + parse->j,
-				&parse->f_color);
-		else if (check_identifier(parse->split_identifier[i], "C ", parse))
-			int_to_hex(parse, parse->split_identifier[i] + parse->j,
-				&parse->c_color);
-		i++;
-	}
+    i = 0;
+    while (parse->split_identifier[i])
+    {
+        if (check_identifier(parse->split_identifier[i], "NO ", parse))
+            check_nswe(parse, parse->split_identifier[i] + parse->j,
+                &parse->nswe[0]);
+        else if (check_identifier(parse->split_identifier[i], "SO ", parse))
+            check_nswe(parse, parse->split_identifier[i] + parse->j,
+                &parse->nswe[1]);
+        else if (check_identifier(parse->split_identifier[i], "WE ", parse))
+            check_nswe(parse, parse->split_identifier[i] + parse->j,
+                &parse->nswe[2]);
+        else if (check_identifier(parse->split_identifier[i], "EA ", parse))
+            check_nswe(parse, parse->split_identifier[i] + parse->j,
+                &parse->nswe[3]);
+        else if (check_identifier(parse->split_identifier[i], "F ", parse))
+        {
+            int_to_hex(parse, parse->split_identifier[i] + parse->j,
+                &parse->f_color);
+            parse->count[4]++;
+        }
+        else if (check_identifier(parse->split_identifier[i], "C ", parse))
+        {
+            int_to_hex(parse, parse->split_identifier[i] + parse->j,
+                &parse->c_color);
+            parse->count[5]++;
+        }
+        i++;
+    }
 }
 
 void	check_all(t_parse *parse, int argc, char *argv[])

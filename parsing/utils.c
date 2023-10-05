@@ -54,48 +54,49 @@ int	**char_to_int(char **map, int height, int width)
 	return (int_map);
 }
 
-void	init_s_map(t_map *map, t_parse *parse)
+void	init_s_map(t_cub3D *cub3D, t_parse *parse)
 {
-	map->height = count_line(parse->split_map);
-	map->width = max_char_length(parse->split_map);
-	map->map = char_to_int(parse->split_map, map->height, map->width);
-	map->player.x = parse->px;
-	map->player.y = parse->py;
-	map->player_direction = parse->p_d;
-	map->floor_color = parse->f_color;
-	map->ceiling_color = parse->c_color;
-	map->n = parse->nswe[0];
-	map->s = parse->nswe[1];
-	map->w = parse->nswe[2];
-	map->e = parse->nswe[3];
+	cub3D->map.height = count_line(parse->split_map);
+	cub3D->map.width = max_char_length(parse->split_map);
+	cub3D->map.map = char_to_int(parse->split_map, cub3D->map.height,
+			cub3D->map.width);
+	cub3D->map.player.x = parse->px;
+	cub3D->map.player.y = parse->py;
+	cub3D->map.player_direction = parse->p_d;
+	cub3D->map.floor_color = parse->f_color;
+	cub3D->map.ceiling_color = parse->c_color;
+	cub3D->map.n = parse->nswe[0];
+	cub3D->map.s = parse->nswe[1];
+	cub3D->map.w = parse->nswe[2];
+	cub3D->map.e = parse->nswe[3];
 }
 
-void	print_arg_map(t_map *map)
+void	print_arg_map(t_cub3D *cub3D)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < map->height)
+	while (i < cub3D->map.height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < cub3D->map.width)
 		{
-			printf("%d", map->map[i][j]);
+			printf("%d", cub3D->map.map[i][j]);
 			j++;
 		}
 		printf("\n");
 		i++;
 	}
-	printf("map height: %d\n", map->height);
-	printf("map width: %d\n", map->width);
-	printf("player x: %d\n", map->player.x);
-	printf("player y: %d\n", map->player.y);
-	printf("player direction: %c\n", map->player_direction);
-	printf("floor color: %d\n", map->floor_color);
-	printf("ceiling color: %d\n", map->ceiling_color);
-	printf("north texture: %s\n", map->n);
-	printf("south texture: %s\n", map->s);
-	printf("west texture: %s\n", map->w);
-	printf("east texture: %s\n", map->e);
+	printf("map height: %d\n", cub3D->map.height);
+	printf("map width: %d\n", cub3D->map.width);
+	printf("player x: %d\n", cub3D->map.player.x);
+	printf("player y: %d\n", cub3D->map.player.y);
+	printf("player direction: %c\n", cub3D->map.player_direction);
+	printf("floor color: %d\n", cub3D->map.floor_color);
+	printf("ceiling color: %d\n", cub3D->map.ceiling_color);
+	printf("north texture: %s\n", cub3D->map.n);
+	printf("south texture: %s\n", cub3D->map.s);
+	printf("west texture: %s\n", cub3D->map.w);
+	printf("east texture: %s\n", cub3D->map.e);
 }

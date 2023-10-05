@@ -69,23 +69,7 @@ typedef struct s_ray {
   int ray_facing_right;
 } t_ray;
 
-typedef struct s_cub3D {
 
-  void *ptr_mlx;
-  void *mlx_win;
-  int height;
-  int width;
-  int **points;
-  t_player player;
-  t_data data;
-  t_data texture_NO;
-  t_data texture_SO;
-  t_data texture_WE;
-  t_data texture_EA;
-  t_data texture;
-  t_ray_params ray_params;
-  // t_ray ray;
-} t_cub3D;
 
 typedef struct s_map
 {
@@ -124,4 +108,24 @@ typedef struct s_parse
   int *count;
 } t_parse;
 
+typedef struct s_cub3D {
+
+  void *ptr_mlx;
+  void *mlx_win;
+  int height;
+  int width;
+  int **points;
+  t_player player;
+  t_player mouse;
+  t_data data;
+  t_data texture_NO;
+  t_data texture_SO;
+  t_data texture_WE;
+  t_data texture_EA;
+ // t_data texture_ceiling;
+  t_data texture;
+  t_ray_params ray_params;
+  t_map map;
+  // t_ray ray;
+} t_cub3D;
 #endif

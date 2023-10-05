@@ -35,15 +35,13 @@ void draw_rectangle(t_cub3D *cub3D, t_point point, int height, int width) {
     i++;
   }
 }
-// this fucntion hj::
+
 void draw_player(t_cub3D *cub3D) {
   t_point point;
   point.y = (cub3D->player.x * VECTOR) + ((double)VECTOR / 2) - 8;
   point.x = (cub3D->player.y * VECTOR) + ((double)VECTOR / 2) - 8;
   point.color = cub3D->player.color;
   draw_rays_2D(cub3D);
-  // draw_square(point, 16, cub3D, 0);
-  // draw_player_direction(cub3D);
 }
 
 void draw_2d_map(t_cub3D cub3D) {
@@ -52,14 +50,14 @@ void draw_2d_map(t_cub3D cub3D) {
   t_point point;
   t_player player;
   i = 0;
-  while (i < cub3D.height) {
+  while (i < cub3D.map.height) {
     j = 0;
-    while (j < cub3D.width) {
+    while (j < cub3D.map.width) {
 
       point.x = j * VECTOR;
       point.y = i * VECTOR;
       point.color = 0x053B50;
-      if (!cub3D.points[i][j])
+      if (!cub3D.map.map[i][j])
         point.color = 0xEEEEEE;
       draw_square(point, VECTOR, &cub3D, 1);
       j++;

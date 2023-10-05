@@ -64,8 +64,4 @@ void	int_to_hex(t_parse *parse, char *line, int *hex)
 	free(parse->arg_id);
 	*hex = (r << 16) | (g << 8) | b;
 	parse->j = 0;
-	if (*hex == parse->f_color)
-		parse->count[4]++;
-	else if (*hex == parse->c_color)
-		parse->count[5]++;
 }

@@ -46,10 +46,10 @@ t_point check_horizontal_intersection(t_cub3D *cub3D, double ra) {
 
   init_horizontal_params(cub3D, &first_inter, ra);
   while ((int)(first_inter.x_intercept / 64) >= 0 &&
-         (int)(first_inter.x_intercept / 64) < cub3D->width &&
+         (int)(first_inter.x_intercept / 64) < cub3D->map.width &&
          (int)(first_inter.y_intercept / 64) >= 0 &&
-         (int)(first_inter.y_intercept / 64) < cub3D->height) {
-    if (cub3D->points[(int)(first_inter.y_intercept / 64)]
+         (int)(first_inter.y_intercept / 64) < cub3D->map.height) {
+    if (cub3D->map.map[(int)(first_inter.y_intercept / 64)]
                      [(int)(first_inter.x_intercept / 64)] == 1) {
       break;
     } else {
@@ -91,11 +91,11 @@ t_point check_vertical_intersection(t_cub3D *cub3D, double ra) {
   t_point v_inter;
 
   init_vetical_params(cub3D, &first_inter, ra);
-  while ((int)(first_inter.x_intercept / 64) >= 0 &&
-         (int)(first_inter.x_intercept / 64) < cub3D->width &&
-         (int)(first_inter.y_intercept / 64) >= 0 &&
-         (int)(first_inter.y_intercept / 64) < cub3D->height) {
-    if (cub3D->points[(int)(first_inter.y_intercept / 64)]
+  while ((int)(first_inter.x_intercept / VECTOR) >= 0 &&
+         (int)(first_inter.x_intercept / VECTOR) < cub3D->map.width &&
+         (int)(first_inter.y_intercept / VECTOR) >= 0 &&
+         (int)(first_inter.y_intercept / VECTOR) < cub3D->map.height) {
+    if (cub3D->map.map[(int)(first_inter.y_intercept / 64)]
                      [(int)(first_inter.x_intercept / 64)] == 1) {
       break;
     } else {
