@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_wall.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/05 23:07:43 by olahmami          #+#    #+#             */
+/*   Updated: 2023/10/05 23:07:44 by olahmami         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
 int	check_around(char **map, int y, int x)
@@ -8,8 +20,8 @@ int	check_around(char **map, int y, int x)
 		if (map[y][x + 1] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '
 			|| map[y - 1][x] == ' ' || map[y][x + 1] == '\t' || map[y][x
 			- 1] == '\t' || map[y + 1][x] == '\t' || map[y - 1][x] == '\t'
-			|| map[y][x + 1] == '\0' || map[y][x - 1] == '\0' || map[y
-			+ 1][x] == '\0' || map[y - 1][x] == '\0')
+			|| !map[y][x + 1] || !map[y][x - 1] || !map[y + 1][x] || !map[y
+			- 1][x])
 			return (1);
 	}
 	return (0);
@@ -46,10 +58,10 @@ int	check_wall(t_parse *parse)
 		{
 			if (tmp[0] != '1' || tmp[ft_strlen(tmp) - 1] != '1'
 				|| check_around(parse->split_map, y, x))
-				{
-					free(tmp);
-					return (1);
-				}
+			{
+				free(tmp);
+				return (1);
+			}
 			x++;
 		}
 		free(tmp);

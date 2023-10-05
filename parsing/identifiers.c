@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   identifiers.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/05 23:07:36 by olahmami          #+#    #+#             */
+/*   Updated: 2023/10/05 23:07:37 by olahmami         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
 void	check_multi_args(t_parse *parse, char *line)
@@ -35,7 +47,7 @@ char	*check_path(t_parse *parse, char *line)
 
 void	check_nswe(t_parse *parse, char *line, char **id)
 {
-	if(*id)
+	if (*id)
 		free(*id);
 	*id = check_path(parse, line);
 	parse->j = 0;

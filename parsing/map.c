@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/05 23:07:32 by olahmami          #+#    #+#             */
+/*   Updated: 2023/10/05 23:07:33 by olahmami         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
 int	composed_map(char *line)
@@ -57,6 +69,18 @@ int	no_line(t_parse *parse)
 	return (0);
 }
 
+int	no_line1(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	if (line[i] == '\0')
+		return (1);
+	return (0);
+}
+
 void	check_map(t_parse *parse)
 {
 	int	y;
@@ -65,7 +89,7 @@ void	check_map(t_parse *parse)
 	parse->p = 0;
 	while (parse->split_map[y])
 	{
-		if (composed_map(parse->split_map[y]))
+		if (composed_map(parse->split_map[y]) || no_line1(parse->split_map[y]))
 		{
 			ft_putstr_fd("Error:\nInvalid caractere\n", 2);
 			exit(1);

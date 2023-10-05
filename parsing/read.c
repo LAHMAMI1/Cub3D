@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/05 23:07:14 by olahmami          #+#    #+#             */
+/*   Updated: 2023/10/05 23:07:15 by olahmami         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
 int	not_map(char *line)
@@ -23,7 +35,7 @@ int	line_space(char *line)
 	i = 0;
 	while (line[i] && ft_isspace(line[i]))
 		i++;
-	return (line[i]=='\n' || line[i]=='\0');
+	return (line[i] == '\n' || line[i] == '\0');
 }
 
 void	read_map(int fd, t_parse *parse, char *line)
@@ -35,7 +47,6 @@ void	read_map(int fd, t_parse *parse, char *line)
 		free(line);
 		while (1)
 		{
-
 			line = get_next_line(fd);
 			if (!line)
 				break ;
@@ -62,7 +73,7 @@ void	read_file(t_parse *parse)
 		line = get_next_line(parse->fd);
 		if (!line || not_map(line))
 			break ;
-		if(!line_space(line))
+		if (!line_space(line))
 			parse->str = ft_strjoin(parse->str, line);
 		free(line);
 	}

@@ -1,5 +1,3 @@
-
-
 #include "../includes/cub3D.h"
 #include <math.h>
 #include <stdio.h>
@@ -28,8 +26,8 @@ void	init_ray_params(t_cub3D *cub3D)
 {
 	cub3D->ray_params.fov_angle = 60 * (M_PI / 180);
 	cub3D->ray_params.pix_per_colom = 5;
-	cub3D->ray_params.rays_namber =
-		(cub3D->map.width * VECTOR) / cub3D->ray_params.pix_per_colom;
+	cub3D->ray_params.rays_namber
+		= (cub3D->map.width * VECTOR) / cub3D->ray_params.pix_per_colom;
 }
 
 void	init_data(t_cub3D *cub3D)

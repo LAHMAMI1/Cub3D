@@ -1,11 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/05 23:07:40 by olahmami          #+#    #+#             */
+/*   Updated: 2023/10/05 23:07:41 by olahmami         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
 void	check_len(t_parse *parse)
 {
 	int	i;
 	int	count;
+	int	check;
 
 	count = 0;
+	check = 0;
 	i = 0;
 	while (parse->arg_id[i])
 	{
@@ -15,10 +29,14 @@ void	check_len(t_parse *parse)
 	}
 	i = 0;
 	while (parse->split_color[i])
-		i++;
-	if (i != 3 || count != 2)
 	{
-		ft_putstr_fd("Error:\nNot valid color 1", 2);
+		if (ft_strlen(parse->split_color[i]) > 3)
+			check += 1;
+		i++;
+	}
+	if (i != 3 || count != 2 || check > 0)
+	{
+		ft_putstr_fd("Error:\nNot valid color", 2);
 		exit(1);
 	}
 }
