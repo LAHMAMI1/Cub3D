@@ -34,34 +34,7 @@ void	init_ray_params(t_cub3D *cub3D)
 
 void	init_data(t_cub3D *cub3D)
 {
-	int	i;
-	int	j;
-
-	// int initialMatrix[10][20] = {
-	//     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-	//     {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-	//     {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1},
-	//     {1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-	//     {1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	//     {1, 0, 1, 0, 2, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	//     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	//     {1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	//     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-	//     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-	i = -1;
-	// cub3D->width = cub3D->map.width;
-	// cub3D->height = cub3D->map.height;
-	// cub3D->points = (int **)malloc(sizeof(int *) * cub3D->height);
 	ft_memset(&cub3D->player, 0, sizeof(t_player));
-	// while (++i < cub3D->height)
-	//   cub3D->points[i] = malloc(sizeof(int *) * cub3D->width);
-	// i = -1;
-	// while (++i < cub3D->height) {
-	//   j = -1;
-	//   while (++j < cub3D->width) {
-	//     cub3D->points[i][j] = map->map[i][j];
-	//   }
-	// }
 	init_player(cub3D, cub3D->map.player.y, cub3D->map.player.x);
 	init_ray_params(cub3D);
 }

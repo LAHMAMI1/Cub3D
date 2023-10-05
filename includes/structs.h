@@ -107,7 +107,18 @@ typedef struct s_parse
 	char p_d;
   int *count;
 } t_parse;
-
+typedef struct s_ray_data
+{
+    double new_angle ;
+		double final_distance ;
+		double line_h ;
+    double ra;
+		int top_pixel ;
+		int bottom_pixel;
+    int  ray_hit_h;
+    t_point inter_point;
+    t_data texture;
+} t_ray_data;
 typedef struct s_cub3D {
 
   void *ptr_mlx;
@@ -126,6 +137,6 @@ typedef struct s_cub3D {
   t_data texture;
   t_ray_params ray_params;
   t_map map;
-  // t_ray ray;
+  t_ray_data ray_data;
 } t_cub3D;
 #endif
