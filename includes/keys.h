@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 15:46:50 by fdiraa            #+#    #+#             */
+/*   Updated: 2023/10/06 15:46:55 by fdiraa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef KEYS_H
 # define KEYS_H
 
-#define EVENT_KEY_PRESS 2
-#define EVENT_KEY_RELEASE 3
-#define EVENT_MOUSE_PRESS 4
-#define EVENT_MOUSE_RELEASE 5
-#define EVENT_MOUSE_MOVE 6
-#define EVENT_EXPOSE 12
-#define EVENT_CLOSE 17
+# define EVENT_KEY_PRESS 2
+# define EVENT_KEY_RELEASE 3
+# define EVENT_MOUSE_PRESS 4
+# define EVENT_MOUSE_RELEASE 5
+# define EVENT_MOUSE_MOVE 6
+# define EVENT_EXPOSE 12
+# define EVENT_CLOSE 17
 
 // Defining Mouse Button Codes
 
-#define MOUSE_LEFT_BUTTON 1
-#define MOUSE_RIGHT_BUTTON 2
-#define MOUSE_MIDDLE_BUTTON 2
-#define MOUSE_SCROLL_UP 4
-#define MOUSE_SCROLL_DOWN 5
-#define MOUSE_SCROLL_LEFT 6
-#define MOUSE_SCROLL_RIGHT 7
+# define MOUSE_LEFT_BUTTON 1
+# define MOUSE_RIGHT_BUTTON 2
+# define MOUSE_MIDDLE_BUTTON 2
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
+# define MOUSE_SCROLL_LEFT 6
+# define MOUSE_SCROLL_RIGHT 7
 
 // Definine Some KeyboardKeyCodes
 /*
@@ -26,11 +38,11 @@ keycode : 65363
 keycode : 65361
 keycode : 65307
 */
-#define KEY_ESC 65307
-#define KEY_DOWN 65364
-#define KEY_UP 65362
-#define KEY_LEFT 65363
-#define KEY_RIGHT 65361
+# define KEY_ESC 65307
+# define KEY_DOWN 65364
+# define KEY_UP 65362
+# define KEY_LEFT 65363
+# define KEY_RIGHT 65361
 # define KEY_ENTER 36
 # define KEY_SPACE 49
 # define KEY_PLUS 69

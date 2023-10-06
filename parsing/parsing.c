@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	init_player(t_cub3D *cub3D, int i, int j)
+void	init_player(t_cub3D *cub3D)
 {
 	cub3D->player.x = cub3D->map.player.y;
 	cub3D->player.y = cub3D->map.player.x;
@@ -33,6 +33,6 @@ void	init_ray_params(t_cub3D *cub3D)
 void	init_data(t_cub3D *cub3D)
 {
 	ft_memset(&cub3D->player, 0, sizeof(t_player));
-	init_player(cub3D, cub3D->map.player.y, cub3D->map.player.x);
+	init_player(cub3D);
 	init_ray_params(cub3D);
 }

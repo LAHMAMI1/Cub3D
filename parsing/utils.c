@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:07 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:07:08 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:16:59 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ int	max_char_length(char **map)
 {
 	int	i;
 	int	max;
+	
 
 	i = 0;
 	max = 0;
 	while (map[i])
 	{
-		if (max < ft_strlen(map[i]))
-			max = ft_strlen(map[i]);
+		if (max < (int)ft_strlen(map[i]))
+			max = (int)ft_strlen(map[i]);
 		i++;
 	}
 	return (max);

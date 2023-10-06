@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:08:27 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:25:18 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:14:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	key_down(int keycode, t_cub3D *cub3D)
 
 void	draw_new_move(t_cub3D *cub3D)
 {
-	update_player(cub3D);
+	update_player_bonnus(cub3D);
 	draw_player(cub3D);
 	mlx_clear_window(cub3D->ptr_mlx, cub3D->mlx_win);
 	mlx_put_image_to_window(cub3D->ptr_mlx, cub3D->mlx_win, cub3D->data.img, 0,
@@ -67,6 +67,8 @@ void	hooks_handler(t_cub3D *cub3D)
 	mlx_loop_hook(cub3D->ptr_mlx, (void *)draw_new_move, cub3D);
 	mlx_hook(cub3D->mlx_win, KeyPress, KeyPressMask, key_down, cub3D);
 	mlx_hook(cub3D->mlx_win, KeyRelease, KeyReleaseMask, key_up, cub3D);
+	mlx_hook(cub3D->mlx_win, MotionNotify, PointerMotionMask, mouse_move,
+		cub3D);
 	mlx_hook(cub3D->mlx_win, DestroyNotify, StructureNotifyMask,
 		(void *)close_window, cub3D);
 }
