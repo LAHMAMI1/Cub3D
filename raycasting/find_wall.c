@@ -1,11 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_wall.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 12:14:02 by fdiraa            #+#    #+#             */
+/*   Updated: 2023/10/06 12:44:58 by fdiraa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 #include <math.h>
 #include <stdio.h>
-
-double	distance_between_points(double x1, double y1, double x2, double y2)
-{
-	return (sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)));
-}
 
 void	init_horizontal_params(t_cub3D *cub3D, t_intesc_params *first_inter,
 		double ra)
@@ -28,9 +35,8 @@ void	init_horizontal_params(t_cub3D *cub3D, t_intesc_params *first_inter,
 		first_inter->x_intercept = cub3D->player.px;
 		first_inter->y_intercept = cub3D->player.py;
 	}
-	first_inter->x_intercept =
-		(cub3D->player.py - first_inter->y_intercept) * my_tan
-			+ cub3D->player.px;
+	first_inter->x_intercept = (cub3D->player.py - first_inter->y_intercept)
+		* my_tan + cub3D->player.px;
 	first_inter->x_step = -first_inter->y_step * my_tan;
 }
 
@@ -83,9 +89,8 @@ void	init_vetical_params(t_cub3D *cub3D, t_intesc_params *first_inter,
 		first_inter->x_intercept = cub3D->player.px;
 		first_inter->y_intercept = cub3D->player.py;
 	}
-	first_inter->y_intercept =
-		(cub3D->player.px - first_inter->x_intercept) * my_tan
-			+ cub3D->player.py;
+	first_inter->y_intercept = (cub3D->player.px - first_inter->x_intercept)
+		* my_tan + cub3D->player.py;
 	first_inter->y_step = -first_inter->x_step * my_tan;
 }
 
@@ -115,4 +120,33 @@ t_point	check_vertical_intersection(t_cub3D *cub3D, double ra)
 	v_inter.y = first_inter.y_intercept;
 	v_inter.color = 0x00FF00;
 	return (v_inter);
+}
+
+void	check_h_v_intersection(t_cub3D *cub3D)
+{
+	t_point	h_inter;
+	t_point	v_inter;
+	double	h_distance;
+	double	v_distance;
+
+	h_distance = INT_MAX;
+	v_distance = INT_MAX;
+	h_inter = check_horizontal_intersection(cub3D, cub3D->ray_data.ra);
+	h_distance = distance_between_points(cub3D->player.px, cub3D->player.py,
+			h_inter.x, h_inter.y);
+	v_inter = check_vertical_intersection(cub3D, cub3D->ray_data.ra);
+	v_distance = distance_between_points(cub3D->player.px, cub3D->player.py,
+			v_inter.x, v_inter.y);
+	if (h_distance < v_distance)
+	{
+		cub3D->ray_data.inter_point = h_inter;
+		cub3D->ray_data.final_distance = h_distance;
+		cub3D->ray_data.ray_hit_h = 1;
+	}
+	else
+	{
+		cub3D->ray_data.inter_point = v_inter;
+		cub3D->ray_data.final_distance = v_distance;
+		cub3D->ray_data.ray_hit_h = 0;
+	}
 }

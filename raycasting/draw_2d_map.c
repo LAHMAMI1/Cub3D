@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_2d_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 12:15:35 by fdiraa            #+#    #+#             */
+/*   Updated: 2023/10/06 12:37:37 by fdiraa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 #include <stdio.h>
@@ -49,7 +59,7 @@ void	draw_player(t_cub3D *cub3D)
 	point.y = (cub3D->player.x * VECTOR) + ((double)VECTOR / 2) - 8;
 	point.x = (cub3D->player.y * VECTOR) + ((double)VECTOR / 2) - 8;
 	point.color = cub3D->player.color;
-	draw_rays_2D(cub3D);
+	draw_walls(cub3D);
 }
 
 void	draw_2d_map(t_cub3D cub3D)
@@ -75,4 +85,18 @@ void	draw_2d_map(t_cub3D cub3D)
 		}
 		i++;
 	}
+}
+
+void	draw_player_direction(t_cub3D *cub3D)
+{
+	t_point	pt_1;
+	t_point	pt_0;
+
+	pt_0.y = cub3D->player.py;
+	pt_0.x = cub3D->player.px;
+	pt_0.color = cub3D->player.color;
+	pt_1.y = pt_0.y + sin(cub3D->player.retation_angle) * VECTOR;
+	pt_1.x = pt_0.x + cos(cub3D->player.retation_angle) * VECTOR;
+	pt_1.color = cub3D->player.color;
+	draw_line(*cub3D, pt_0, pt_1);
 }
