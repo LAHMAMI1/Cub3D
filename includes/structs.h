@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:42:55 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:42:58 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:57:49 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ typedef struct s_ray_data
 	t_point			inter_point;
 	t_data			texture;
 }					t_ray_data;
-typedef struct s_cub3D
+typedef struct s_cub
 {
 	void			*ptr_mlx;
 	void			*mlx_win;
@@ -145,14 +145,13 @@ typedef struct s_cub3D
 	t_player		player;
 	t_player		mouse;
 	t_data			data;
-	t_data			texture_NO;
-	t_data			texture_SO;
-	t_data			texture_WE;
-	t_data			texture_EA;
-	// t_data texture_ceiling;
+	t_data			texture_no;
+	t_data			texture_so;
+	t_data			texture_we;
+	t_data			texture_ea;
 	t_data			texture;
 	t_ray_params	ray_params;
 	t_map			map;
 	t_ray_data		ray_data;
-}					t_cub3D;
+}					t_cub;
 #endif

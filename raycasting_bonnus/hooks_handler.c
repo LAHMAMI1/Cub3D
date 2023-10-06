@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:08:27 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:14:21 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <math.h>
 #include <stdio.h>
 
-int	key_up(int keycode, t_cub3D *cub3D)
+int	key_up(int keycode, t_cub *cub3D)
 {
 	if (keycode == KEY_W || keycode == KEY_S)
 		cub3D->player.dy = 0;
@@ -26,7 +26,7 @@ int	key_up(int keycode, t_cub3D *cub3D)
 	return (0);
 }
 
-int	key_down(int keycode, t_cub3D *cub3D)
+int	key_down(int keycode, t_cub *cub3D)
 {
 	if (keycode == KEY_W)
 		cub3D->player.dy = cub3D->player.speed * 1;
@@ -45,7 +45,7 @@ int	key_down(int keycode, t_cub3D *cub3D)
 	return (0);
 }
 
-void	draw_new_move(t_cub3D *cub3D)
+void	draw_new_move(t_cub *cub3D)
 {
 	update_player_bonnus(cub3D);
 	draw_player(cub3D);
@@ -54,7 +54,7 @@ void	draw_new_move(t_cub3D *cub3D)
 		0);
 }
 
-int	mouse_move(int x, int y, t_cub3D *cub3D)
+int	mouse_move(int x, int y, t_cub *cub3D)
 {
 	(void)y;
 	cub3D->player.dx = (x - WIDTH / 2) * 0.1;
@@ -62,7 +62,7 @@ int	mouse_move(int x, int y, t_cub3D *cub3D)
 	return (0);
 }
 
-void	hooks_handler(t_cub3D *cub3D)
+void	hooks_handler(t_cub *cub3D)
 {
 	mlx_loop_hook(cub3D->ptr_mlx, (void *)draw_new_move, cub3D);
 	mlx_hook(cub3D->mlx_win, KeyPress, KeyPressMask, key_down, cub3D);

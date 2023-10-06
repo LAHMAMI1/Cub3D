@@ -6,14 +6,14 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:15:35 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:03:35 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 #include <stdio.h>
 
-void	draw_square(t_point point, int len, t_cub3D *cub3D, int draw_borders)
+void	draw_square(t_point point, int len, t_cub *cub3D, int draw_borders)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ void	draw_square(t_point point, int len, t_cub3D *cub3D, int draw_borders)
 	}
 }
 
-void	draw_rectangle(t_cub3D *cub3D, t_point point, int height, int width)
+void	draw_rectangle(t_cub *cub3D, t_point point, int height, int width)
 {
 	int	i;
 	int	j;
@@ -52,7 +52,7 @@ void	draw_rectangle(t_cub3D *cub3D, t_point point, int height, int width)
 	}
 }
 
-void	draw_player(t_cub3D *cub3D)
+void	draw_player(t_cub *cub3D)
 {
 	t_point	point;
 
@@ -63,7 +63,7 @@ void	draw_player(t_cub3D *cub3D)
 	draw_walls(cub3D);
 }
 
-void	draw_2d_map(t_cub3D cub3D)
+void	draw_2d_map(t_cub cub3D)
 {
 	int			i;
 	int			j;
@@ -87,7 +87,7 @@ void	draw_2d_map(t_cub3D cub3D)
 	}
 }
 
-void	draw_player_direction(t_cub3D *cub3D)
+void	draw_player_direction(t_cub *cub3D)
 {
 	t_point	pt_1;
 	t_point	pt_0;

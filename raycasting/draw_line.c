@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:13:18 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 12:13:54 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_vars	vars_init(t_point pt0, t_point pt1)
 	return (var);
 }
 
-void	draw_line(t_cub3D cub3D, t_point pt_0, t_point pt_1)
+void	draw_line(t_cub cub3D, t_point pt_0, t_point pt_1)
 {
 	t_vars	var;
 

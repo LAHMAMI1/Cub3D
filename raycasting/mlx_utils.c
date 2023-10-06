@@ -6,13 +6,13 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:15:56 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 12:15:59 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	my_mlx_pixel_put(t_cub3D *cub3D, int x, int y, int color)
+int	my_mlx_pixel_put(t_cub *cub3D, int x, int y, int color)
 {
 	char	*dst;
 

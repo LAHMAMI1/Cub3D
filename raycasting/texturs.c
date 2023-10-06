@@ -6,13 +6,13 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:28:55 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:06:31 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:57:33 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	*ceiling_floor_buffering(t_cub3D *cub3D)
+int	*ceiling_floor_buffering(t_cub *cub3D)
 {
 	int	*buffer;
 	int	i;
@@ -26,25 +26,25 @@ int	*ceiling_floor_buffering(t_cub3D *cub3D)
 	return (buffer);
 }
 
-t_data	set_texturs(t_cub3D *cub3D, double ra, int flag)
+t_data	set_texturs(t_cub *cub3D, double ra, int flag)
 {
 	if (flag == 1)
 	{
 		if (ra > 0 && ra < M_PI)
-			return (cub3D->texture_SO);
+			return (cub3D->texture_so);
 		else
-			return (cub3D->texture_NO);
+			return (cub3D->texture_no);
 	}
 	else
 	{
 		if (ra > (0.5 * M_PI) && ra < (1.5 * M_PI))
-			return (cub3D->texture_WE);
+			return (cub3D->texture_we);
 		else
-			return (cub3D->texture_EA);
+			return (cub3D->texture_ea);
 	}
 }
 
-void	draw_texturs(t_cub3D *cub3D, int *buffer)
+void	draw_texturs(t_cub *cub3D, int *buffer)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ void	draw_texturs(t_cub3D *cub3D, int *buffer)
 	}
 }
 
-void	textures_buffering(t_cub3D *cub3D, int *buffer, int i)
+void	textures_buffering(t_cub *cub3D, int *buffer, int i)
 {
 	int	texture_x;
 	int	texture_y;

@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:35:42 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:42:25 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:59:20 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,63 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-void	init_texturs_so_no(t_cub3D *cub3D)
+void	init_texturs_so_no(t_cub *cub3D)
 {
-	cub3D->texture_SO.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.s,
-			&cub3D->texture_SO.width, &cub3D->texture_SO.height);
-	if (!cub3D->texture_SO.img)
+	cub3D->texture_so.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.s,
+			&cub3D->texture_so.width, &cub3D->texture_so.height);
+	if (!cub3D->texture_so.img)
 	{
 		printf("cant load SO texture\n");
 		free_map(cub3D);
 		exit(1);
 	}
-	cub3D->texture_SO.addr = mlx_get_data_addr(cub3D->texture_SO.img,
-			&cub3D->texture_SO.bits_per_pixel,
-			&cub3D->texture_SO.line_length,
-			&cub3D->texture_SO.endian);
-	cub3D->texture_NO.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.n,
-			&cub3D->texture_NO.width, &cub3D->texture_NO.height);
-	if (!cub3D->texture_NO.img)
+	cub3D->texture_so.addr = mlx_get_data_addr(cub3D->texture_so.img,
+			&cub3D->texture_so.bits_per_pixel,
+			&cub3D->texture_so.line_length,
+			&cub3D->texture_so.endian);
+	cub3D->texture_no.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.n,
+			&cub3D->texture_no.width, &cub3D->texture_no.height);
+	if (!cub3D->texture_no.img)
 	{
 		printf("cant load NO texture\n");
 		free_map(cub3D);
 		exit(1);
 	}
-	cub3D->texture_NO.addr = mlx_get_data_addr(cub3D->texture_NO.img,
-			&cub3D->texture_NO.bits_per_pixel,
-			&cub3D->texture_NO.line_length,
-			&cub3D->texture_NO.endian);
+	cub3D->texture_no.addr = mlx_get_data_addr(cub3D->texture_no.img,
+			&cub3D->texture_no.bits_per_pixel,
+			&cub3D->texture_no.line_length,
+			&cub3D->texture_no.endian);
 }
 
-void	init_texturs_we_ea(t_cub3D *cub3D)
+void	init_texturs_we_ea(t_cub *cub3D)
 {
-	cub3D->texture_WE.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.w,
-			&cub3D->texture_WE.width, &cub3D->texture_WE.height);
-	if (!cub3D->texture_WE.img)
+	cub3D->texture_we.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.w,
+			&cub3D->texture_we.width, &cub3D->texture_we.height);
+	if (!cub3D->texture_we.img)
 	{
 		printf("cant load WE texture\n");
 		free_map(cub3D);
 		exit(1);
 	}
-	cub3D->texture_WE.addr = mlx_get_data_addr(cub3D->texture_WE.img,
-			&cub3D->texture_WE.bits_per_pixel,
-			&cub3D->texture_WE.line_length,
-			&cub3D->texture_WE.endian);
-	cub3D->texture_EA.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.e,
-			&cub3D->texture_EA.width, &cub3D->texture_EA.height);
-	if (!cub3D->texture_EA.img)
+	cub3D->texture_we.addr = mlx_get_data_addr(cub3D->texture_we.img,
+			&cub3D->texture_we.bits_per_pixel,
+			&cub3D->texture_we.line_length,
+			&cub3D->texture_we.endian);
+	cub3D->texture_ea.img = mlx_xpm_file_to_image(cub3D->ptr_mlx, cub3D->map.e,
+			&cub3D->texture_ea.width, &cub3D->texture_ea.height);
+	if (!cub3D->texture_ea.img)
 	{
 		printf("cant load EA texture\n");
 		free_map(cub3D);
 		exit(1);
 	}
-	cub3D->texture_EA.addr = mlx_get_data_addr(cub3D->texture_EA.img,
-			&cub3D->texture_EA.bits_per_pixel,
-			&cub3D->texture_EA.line_length,
-			&cub3D->texture_EA.endian);
+	cub3D->texture_ea.addr = mlx_get_data_addr(cub3D->texture_ea.img,
+			&cub3D->texture_ea.bits_per_pixel,
+			&cub3D->texture_ea.line_length,
+			&cub3D->texture_ea.endian);
 }
 
-void	init_texturs(t_cub3D *cub3D)
+void	init_texturs(t_cub *cub3D)
 {
 	init_texturs_so_no(cub3D);
 	init_texturs_we_ea(cub3D);
@@ -78,13 +78,12 @@ void	init_texturs(t_cub3D *cub3D)
 
 int	main(int argc, char *argv[])
 {
-	t_cub3D	cub;
+	t_cub	cub;
 	t_parse	*parse;
 
 	parse = malloc(sizeof(t_parse));
 	check_all(parse, argc, argv);
 	init_s_map(&cub, parse);
-	print_arg_map(&cub);
 	init_data(&cub);
 	cub.ptr_mlx = mlx_init();
 	init_texturs(&cub);

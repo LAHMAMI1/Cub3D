@@ -6,13 +6,13 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:49:19 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:14:00 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	draw_ray(t_cub3D *cub3D, t_ray ray)
+void	draw_ray(t_cub *cub3D, t_ray ray)
 {
 	t_point	pt_1;
 	t_point	pt_0;
@@ -36,7 +36,7 @@ void	calcul_ray_params(t_ray *ray, double ray_angle)
 	ray->ray_facing_left = !ray->ray_facing_right;
 }
 
-void	calcul_ray_data(t_cub3D *cub3D, int *texture_x)
+void	calcul_ray_data(t_cub *cub3D, int *texture_x)
 {
 	cub3D->ray_data.new_angle = cub3D->player.retation_angle
 		- cub3D->ray_data.ra;
@@ -62,7 +62,7 @@ void	calcul_ray_data(t_cub3D *cub3D, int *texture_x)
 	}
 }
 
-void	draw_walls(t_cub3D *cub3D)
+void	draw_walls(t_cub *cub3D)
 {
 	int	*buffer;
 	int	i;

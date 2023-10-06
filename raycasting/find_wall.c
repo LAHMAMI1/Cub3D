@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:14:02 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 12:44:58 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <math.h>
 #include <stdio.h>
 
-void	init_horizontal_params(t_cub3D *cub3D, t_intesc_params *first_inter,
+void	init_horizontal_params(t_cub *cub3D, t_intesc_params *first_inter,
 		double ra)
 {
 	double	my_tan;
@@ -40,7 +40,7 @@ void	init_horizontal_params(t_cub3D *cub3D, t_intesc_params *first_inter,
 	first_inter->x_step = -first_inter->y_step * my_tan;
 }
 
-t_point	check_horizontal_intersection(t_cub3D *cub3D, double ra)
+t_point	check_horizontal_intersection(t_cub *cub3D, double ra)
 {
 	t_intesc_params	first_inter;
 	t_point			h_inter;
@@ -68,7 +68,7 @@ t_point	check_horizontal_intersection(t_cub3D *cub3D, double ra)
 	return (h_inter);
 }
 
-void	init_vetical_params(t_cub3D *cub3D, t_intesc_params *first_inter,
+void	init_vetical_params(t_cub *cub3D, t_intesc_params *first_inter,
 		double ra)
 {
 	double	my_tan;
@@ -94,7 +94,7 @@ void	init_vetical_params(t_cub3D *cub3D, t_intesc_params *first_inter,
 	first_inter->y_step = -first_inter->x_step * my_tan;
 }
 
-t_point	check_vertical_intersection(t_cub3D *cub3D, double ra)
+t_point	check_vertical_intersection(t_cub *cub3D, double ra)
 {
 	t_intesc_params	first_inter;
 	t_point			v_inter;
@@ -122,7 +122,7 @@ t_point	check_vertical_intersection(t_cub3D *cub3D, double ra)
 	return (v_inter);
 }
 
-void	check_h_v_intersection(t_cub3D *cub3D)
+void	check_h_v_intersection(t_cub *cub3D)
 {
 	t_point	h_inter;
 	t_point	v_inter;

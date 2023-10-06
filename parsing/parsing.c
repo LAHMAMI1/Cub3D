@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 16:00:27 by fdiraa            #+#    #+#             */
+/*   Updated: 2023/10/06 16:00:28 by fdiraa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3D.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void	init_player(t_cub3D *cub3D)
+void	init_player(t_cub *cub3D)
 {
 	cub3D->player.x = cub3D->map.player.y;
 	cub3D->player.y = cub3D->map.player.x;
@@ -22,7 +34,7 @@ void	init_player(t_cub3D *cub3D)
 	cub3D->player.speed = 0.7;
 }
 
-void	init_ray_params(t_cub3D *cub3D)
+void	init_ray_params(t_cub *cub3D)
 {
 	cub3D->ray_params.fov_angle = 60 * (M_PI / 180);
 	cub3D->ray_params.pix_per_colom = 5;
@@ -30,7 +42,7 @@ void	init_ray_params(t_cub3D *cub3D)
 		= (cub3D->map.width * VECTOR) / cub3D->ray_params.pix_per_colom;
 }
 
-void	init_data(t_cub3D *cub3D)
+void	init_data(t_cub *cub3D)
 {
 	ft_memset(&cub3D->player, 0, sizeof(t_player));
 	init_player(cub3D);

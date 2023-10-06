@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:14:43 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:18:24 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int		check_around(char **map, int y, int x);
 
 int		max_char_length(char **map);
 int		**char_to_int(char **map, int height, int width);
-void	init_s_map(t_cub3D *cub3D, t_parse *parse);
-void	print_arg_map(t_cub3D *cub3D);
+void	init_s_map(t_cub *cub3D, t_parse *parse);
+void	print_arg_map(t_cub *cub3D);
 #endif

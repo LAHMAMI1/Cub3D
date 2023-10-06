@@ -6,13 +6,13 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:46:10 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 14:58:02 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	square_is_wall(t_cub3D *cub3D, double i, double j)
+int	square_is_wall(t_cub *cub3D, double i, double j)
 {
 	double	step;
 
@@ -35,7 +35,7 @@ int	square_is_wall(t_cub3D *cub3D, double i, double j)
 	return (0);
 }
 
-void	update_move_speed(t_cub3D *cub3D, double *move_speed, double *angle)
+void	update_move_speed(t_cub *cub3D, double *move_speed, double *angle)
 {
 	if (cub3D->player.dy)
 	{
@@ -49,7 +49,7 @@ void	update_move_speed(t_cub3D *cub3D, double *move_speed, double *angle)
 	}
 }
 
-void	update_player_bonnus(t_cub3D *cub3D)
+void	update_player_bonnus(t_cub *cub3D)
 {
 	double	move_speed;
 	double	i;
@@ -72,7 +72,7 @@ void	update_player_bonnus(t_cub3D *cub3D)
 	cub3D->player.py = (i * VECTOR) + (double)VECTOR / 2;
 }
 
-void	update_player(t_cub3D *cub3D)
+void	update_player(t_cub *cub3D)
 {
 	double	move_speed;
 	double	i;

@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:07 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/06 15:16:59 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 16:01:05 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	max_char_length(char **map)
 {
 	int	i;
 	int	max;
-	
 
 	i = 0;
 	max = 0;
@@ -67,7 +66,7 @@ int	**char_to_int(char **map, int height, int width)
 	return (int_map);
 }
 
-void	init_s_map(t_cub3D *cub3D, t_parse *parse)
+void	init_s_map(t_cub *cub3D, t_parse *parse)
 {
 	cub3D->map.height = count_line(parse->split_map);
 	cub3D->map.width = max_char_length(parse->split_map);
@@ -82,34 +81,4 @@ void	init_s_map(t_cub3D *cub3D, t_parse *parse)
 	cub3D->map.s = parse->nswe[1];
 	cub3D->map.w = parse->nswe[2];
 	cub3D->map.e = parse->nswe[3];
-}
-
-void	print_arg_map(t_cub3D *cub3D)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < cub3D->map.height)
-	{
-		j = 0;
-		while (j < cub3D->map.width)
-		{
-			printf("%d", cub3D->map.map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	printf("map height: %d\n", cub3D->map.height);
-	printf("map width: %d\n", cub3D->map.width);
-	printf("player x: %d\n", cub3D->map.player.x);
-	printf("player y: %d\n", cub3D->map.player.y);
-	printf("player direction: %c\n", cub3D->map.player_direction);
-	printf("floor color: %d\n", cub3D->map.floor_color);
-	printf("ceiling color: %d\n", cub3D->map.ceiling_color);
-	printf("north texture: %s\n", cub3D->map.n);
-	printf("south texture: %s\n", cub3D->map.s);
-	printf("west texture: %s\n", cub3D->map.w);
-	printf("east texture: %s\n", cub3D->map.e);
 }

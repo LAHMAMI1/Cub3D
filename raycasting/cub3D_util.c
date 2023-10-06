@@ -6,13 +6,13 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:41:13 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 12:52:55 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:57:33 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	free_map(t_cub3D *cub3D)
+void	free_map(t_cub *cub3D)
 {
 	int	i;
 
@@ -25,14 +25,14 @@ void	free_map(t_cub3D *cub3D)
 	free(cub3D->map.map);
 }
 
-void	close_window(t_cub3D *cub3D)
+void	close_window(t_cub *cub3D)
 {
 	mlx_destroy_window(cub3D->ptr_mlx, cub3D->mlx_win);
 	mlx_destroy_image(cub3D->ptr_mlx, cub3D->data.img);
-	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_SO.img);
-	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_NO.img);
-	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_WE.img);
-	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_EA.img);
+	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_so.img);
+	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_no.img);
+	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_we.img);
+	mlx_destroy_image(cub3D->ptr_mlx, cub3D->texture_ea.img);
 	free_map(cub3D);
 	exit(0);
 }
