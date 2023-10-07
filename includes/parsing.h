@@ -6,7 +6,7 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:14:43 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/07 03:49:32 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:37:55 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ int		composed_map(char *line);
 
 int		check_player(t_parse *parse, int y, char *line);
 int		no_line(t_parse *parse);
-int		no_line1(char *line);
 int		count_line(char **split_map);
 
 int		wall_map(t_parse *parse);
+char	**map_dup(t_parse *parse, int width, int height, char **dup);
+char	*line_set(int width);
+int		check_four(int x, int y, char **dup_map);
+int		check_wall(char **dup_map, int x, int y);
 
 int		max_char_length(char **map);
 int		**char_to_int(char **map, int height, int width);
 void	init_s_map(t_cub *cub3D, t_parse *parse);
-char **map_dup(t_parse *parse);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:42:55 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:57:49 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/07 16:02:48 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct s_parse
 	int				py;
 	char			p_d;
 	int				*count;
+	int				error;
 }					t_parse;
 typedef struct s_ray_data
 {
