@@ -6,7 +6,7 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:51 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:20:16 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:39:13 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_identifier(char *f, char *ab, t_parse *parse)
 		}
 		else
 		{
-			ft_putstr_fd("Error:\nWrong entries", 2);
+			ft_putstr_fd("Error:\nWrong entries\n", 2);
 			exit(1);
 		}
 	}
@@ -89,7 +89,7 @@ void	check_all(t_parse *parse, int argc, char *argv[])
 	if (parse->count[0] != 1 || parse->count[1] != 1 || parse->count[2] != 1
 		|| parse->count[3] != 1 || parse->count[4] != 1 || parse->count[5] != 1)
 	{
-		ft_putstr_fd("Error:\nWrong entries", 2);
+		ft_putstr_fd("Error:\nWrong entries\n", 2);
 		exit(1);
 	}
 	check_map(parse);

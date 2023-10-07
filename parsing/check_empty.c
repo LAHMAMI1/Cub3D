@@ -6,7 +6,7 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:45 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:07:46 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:29:28 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_empty(t_parse *parse)
 	parse->split_file = ft_split(parse->str, '\n');
 	if (!parse->split_file || check_space(parse->split_file))
 	{
-		ft_putstr_fd("Error:\nEmpty file", 2);
+		ft_putstr_fd("Error:\nEmpty file\n", 2);
 		close(parse->fd_empty);
 		exit(1);
 	}

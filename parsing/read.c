@@ -6,7 +6,7 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:14 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:07:15 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:31:29 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	read_map(int fd, t_parse *parse, char *line)
 	}
 	else
 	{
-		ft_putstr_fd("Error:\nthere is no map\n", 1);
+		ft_putstr_fd("Error:\nthere is no map\n", 2);
 		close(parse->fd);
 		exit(1);
 	}

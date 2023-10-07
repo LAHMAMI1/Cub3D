@@ -6,7 +6,7 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:40 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:07:41 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:31:01 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_len(t_parse *parse)
 	}
 	if (i != 3 || count != 2 || check > 0)
 	{
-		ft_putstr_fd("Error:\nNot valid color", 2);
+		ft_putstr_fd("Error:\nNot valid color\n", 2);
 		exit(1);
 	}
 }
@@ -59,7 +59,7 @@ void	check_color(t_parse *parse, char *line)
 				|| !(ft_atoi(parse->split_color[i]) >= 0
 					&& ft_atoi(parse->split_color[i]) <= 255))
 			{
-				ft_putstr_fd("Error:\nNot valid color", 2);
+				ft_putstr_fd("Error:\nNot valid color\n", 2);
 				exit(1);
 			}
 			j++;

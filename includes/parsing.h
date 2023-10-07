@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:14:43 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/07 03:49:32 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,9 @@ int		no_line1(char *line);
 int		count_line(char **split_map);
 
 int		wall_map(t_parse *parse);
-int		check_wall(t_parse *parse);
-int		first_line(t_parse *parse);
-int		check_around(char **map, int y, int x);
 
 int		max_char_length(char **map);
 int		**char_to_int(char **map, int height, int width);
 void	init_s_map(t_cub *cub3D, t_parse *parse);
-void	print_arg_map(t_cub *cub3D);
+char **map_dup(t_parse *parse);
 #endif

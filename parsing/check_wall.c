@@ -6,75 +6,101 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:43 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:07:44 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:34:18 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing.h"
 
-int	check_around(char **map, int y, int x)
+char *line_set(int width)
 {
-	if (map[y][x] == '0' || map[y][x] == 'S' || map[y][x] == 'N'
-		|| map[y][x] == 'W' || map[y][x] == 'E')
-	{
-		if (map[y][x + 1] == ' ' || map[y][x - 1] == ' ' || map[y + 1][x] == ' '
-			|| map[y - 1][x] == ' ' || map[y][x + 1] == '\t' || map[y][x
-			- 1] == '\t' || map[y + 1][x] == '\t' || map[y - 1][x] == '\t'
-			|| !map[y][x + 1] || !map[y][x - 1] || !map[y + 1][x] || !map[y
-			- 1][x])
-			return (1);
-	}
-	return (0);
+    char *new_line;
+    int i;
+
+    new_line = malloc(sizeof(char) * (width + 3));
+    i = 0;
+    while (i < width + 2)
+    {
+        new_line[i] = 'X';
+        i++;
+    }
+    new_line[i] = '\0';
+    return (new_line);
 }
 
-int	first_line(t_parse *parse)
+char **map_dup(t_parse *parse)
 {
-	int	x;
+    int height;
+    int width;
+    char **dup;
+    int i;
+    int j;
 
-	x = 0;
-	while (ft_isspace(parse->split_map[0][x]))
-		x++;
-	while (parse->split_map[0][x])
-	{
-		if (!ft_strchr("1 	", parse->split_map[0][x]))
-			return (1);
-		x++;
-	}
-	return (0);
+    height = count_line(parse->split_map);
+    width = max_char_length(parse->split_map);
+    dup = malloc(sizeof(char *) * (height + 3));
+    dup[0] = line_set(width);
+    i = 1;
+    while (i < height + 1)
+    {
+        dup[i] = malloc(sizeof(char) * (width + 3));
+        j = 0;
+        while (j < width + 2)
+        {
+            if(j && j <= (int)ft_strlen(parse->split_map[i-1]) && ft_strchr("10NSWE", parse->split_map[i - 1][j - 1]))
+                dup[i][j] = parse->split_map[i - 1][j -1];
+            else
+                dup[i][j] = 'X';
+            j++;
+        }
+         
+        dup[i][j] = '\0';
+        i++;
+    }
+    dup[i] = line_set(width);
+    dup[i + 1] = NULL;
+    return (dup);
 }
 
-int	check_wall(t_parse *parse)
+int check_four(int x, int y, char **dup_map)
 {
-	int		y;
-	int		x;
-	char	*tmp;
-
-	y = 0;
-	while (parse->split_map[y])
-	{
-		tmp = ft_strtrim(parse->split_map[y], " ");
-		x = 0;
-		while (tmp[x])
-		{
-			if (tmp[0] != '1' || tmp[ft_strlen(tmp) - 1] != '1'
-				|| check_around(parse->split_map, y, x))
-			{
-				free(tmp);
-				return (1);
-			}
-			x++;
-		}
-		free(tmp);
-		y++;
-	}
-	return (0);
+    if (dup_map[y][x] != 'X' && dup_map[y][x] != '1')
+            return (1);
+    return (0);
 }
 
 int	wall_map(t_parse *parse)
 {
-	if (first_line(parse))
-		return (1);
-	if (check_wall(parse))
-		return (1);
+	char **dup_map;
+    int y;
+    int x;
+
+    dup_map = map_dup(parse);
+    y = 0;
+    while (dup_map[y])
+    {
+        x = 0;
+        while (dup_map[y][x])
+        {
+            if (dup_map[y][x] == 'X')
+            {
+                if ((dup_map[y][x + 1] && check_four(x + 1, y, dup_map))
+                     || (dup_map[y + 1] && check_four(x, y + 1, dup_map)))
+					 {
+						ft_free_split(dup_map);
+                    return (1);
+					 }
+                else if ((x != 0 && check_four(x - 1, y, dup_map))
+                    || (y != 0 && check_four(x, y - 1, dup_map)))
+					{
+						ft_free_split(dup_map);
+                    return (1);
+					}
+            }
+            x++;
+        }
+        y++;
+    }
+	ft_free_split(dup_map);
 	return (0);
 }

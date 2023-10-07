@@ -6,7 +6,7 @@
 /*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:36 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/05 23:07:37 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 03:31:10 by olahmami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_multi_args(t_parse *parse, char *line)
 		i++;
 	if (line[i])
 	{
-		ft_putstr_fd("Error:\nMulti args instead of one", 2);
+		ft_putstr_fd("Error:\nMulti args instead of one\n", 2);
 		exit(1);
 	}
 }
@@ -39,7 +39,7 @@ char	*check_path(t_parse *parse, char *line)
 	if (open(parse->arg_id, O_RDONLY) == -1 || ft_strncmp(parse->arg_id
 			+ (ft_strlen(parse->arg_id) - 4), ".xpm", 4))
 	{
-		ft_putstr_fd("Error:\nNot valid path", 2);
+		ft_putstr_fd("Error:\nNot valid path\n", 2);
 		exit(1);
 	}
 	return (parse->arg_id);
