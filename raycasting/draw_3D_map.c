@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:49:19 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 15:52:21 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/07 16:51:13 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	calcul_ray_data(t_cub *cub3D, int *texture_x)
 	cub3D->ray_data.new_angle = cub3D->player.retation_angle
 		- cub3D->ray_data.ra;
 	cub3D->ray_data.final_distance *= cos(cub3D->ray_data.new_angle);
-	cub3D->ray_data.line_h = (64 * WIDTH) / cub3D->ray_data.final_distance;
+	cub3D->ray_data.line_h = (VECTOR * WIDTH) / cub3D->ray_data.final_distance;
 	cub3D->ray_data.top_pixel = ((double)HEIGHT / 2) - (cub3D->ray_data.line_h
 			/ 2);
 	cub3D->ray_data.bottom_pixel = ((double)HEIGHT / 2)

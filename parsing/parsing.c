@@ -6,7 +6,7 @@
 /*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 16:00:27 by fdiraa            #+#    #+#             */
-/*   Updated: 2023/10/06 16:00:28 by fdiraa           ###   ########.fr       */
+/*   Updated: 2023/10/07 16:51:48 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_player(t_cub *cub3D)
 		cub3D->player.retation_angle = M_PI;
 	if (cub3D->map.player_direction == 'E')
 		cub3D->player.retation_angle = 0;
-	cub3D->player.retation_speed = 2 * (M_PI / 180);
+	cub3D->player.retation_speed = 2 * (M_PI / 180) * 1.3;
 	cub3D->player.speed = 0.7;
 }
 

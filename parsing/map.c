@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olahmami <olahmami@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: fdiraa <fdiraa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 23:07:32 by olahmami          #+#    #+#             */
-/*   Updated: 2023/10/07 03:22:55 by olahmami         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:34:40 by fdiraa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,6 @@ int	no_line(t_parse *parse)
 	free(parse->str);
 	return (0);
 }
-
-// int	no_line1(char *line)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
-// 		i++;
-// 	if (line[i] == '\0')
-// 		return (1);
-// 	return (0);
-// }
 
 void	check_map(t_parse *parse)
 {
